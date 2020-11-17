@@ -1,0 +1,103 @@
+
+html, body * {
+    box-sizing: border-box;
+   
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+body, html {
+    height: auto;
+    /*background: linear-gradient(90deg,#16703f,#c9c9c9);*/
+    background-attachment: fixed;
+     background-image: url(../image/01-1.jpg);
+     background-size: cover;
+}
+
+/* navbar menu*/
+
+.nav {
+    width: 100%;
+    height: 100px;
+    padding-top: 40px;
+    opacity: 1;
+    transition: all .5s ease;
+}
+
+.nav-up {
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.navbav-nav .nav-item:active .nav-link, .navbar-nav .nav-item .nav-link:hover {
+    border-bottom: 2px solid rgba(246, 247, 249, 0.8);
+    padding-bottom: .5rem;
+}
+
+.navbar {
+    transition: 300ms ease;
+    /* background: #578097; */
+    /*transition: 770ms cubic-bezier(0.51, 0.04, 0.12, 0.99);*/
+}
+
+.top-nav-collapse {
+    background: none;
+}
+
+#login {
+    display: none;
+}
+
+/* header */
+
+
+.masthead .col-12 {
+    border-radius: 50px;
+    background-color:#4f575c;
+}
+
+section .filter {
+    height: 100%;
+}
+
+/*carousel filter*/
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-size: 100%, 100%;
+    background-image: none;
+}
+
+.carousel-control-next-icon:after {
+    content: '>';
+    font-size: 55px;
+    color: #ffffff;
+}
+
+.carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 55px;
+    color: #000000;
+}
+
+/* date */
+
+.datepicker.datepicker-inline {
+    box-shadow: 2px 5px 10px #333333;
+    background-color: lightblue;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+table.table-condensed {
+    margin: 0px;
+}

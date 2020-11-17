@@ -1,0 +1,149 @@
+html, body * {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body, html {
+    height: auto;
+    /*background: linear-gradient(90deg,#16703f,#c9c9c9);*/
+    background-attachment: fixed;
+    background-image: url(../image/17.jpg);
+     background-size: cover;
+    /*overflow: hidden;*/
+}
+
+/* navbar menu*/
+
+.nav {
+    width: 100%;
+    height: 100px;
+    padding-top: 40px;
+    opacity: 1;
+    transition: all .5s ease;
+}
+
+.nav-up {
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.navbav-nav .nav-item:active .nav-link, .navbar-nav .nav-item .nav-link:hover {
+    border-bottom: 2px solid rgba(246, 247, 249, 0.8);
+    padding-bottom: .5rem;
+}
+
+.navbar {
+    transition: 300ms ease;
+    /* background: #4285F4; */
+    /*transition: 770ms cubic-bezier(0.51, 0.04, 0.12, 0.99);*/
+}
+
+.top-nav-collapse {
+    background: none;
+}
+
+#login {
+    display: none;
+}
+
+/* timeline */
+
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+
+ul.timeline>li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+ul.timeline>li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #22c0e8;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
+ul.timeline>a {
+    color: steelblue;
+}
+
+@media (max-width: 1199px) {
+    #displaymap {
+        height: 500px;
+    }
+}
+
+/* modal select hotel */
+
+.testimonial-group>.row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+/* .modal .modal-footer .testimonial-group>.row {
+    background-color: red;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+} */
+
+/* scroll bar */
+
+.row::-webkit-scrollbar {
+    width: 10px;
+    /* width of the entire scrollbar */
+}
+
+.row::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 5px 5px white, inset 0 0 0 4px black;
+    /*box-shadow: 5px 10px 20px #666666;
+    /* color of the scroll thumb */
+    border-radius: 10px;
+    /* roundness of the scroll thumb */
+    /*border: 3px solid orange;  /* creates padding around scroll thumb */
+}
+
+/*.row::-webkit-scrollbar-track {
+    box-shadow: 5px 10px 20px #666666;
+}*/
+
+.row::-webkit-scrollbar-thumb:hover {
+    background-color: lavender;
+}
+
+.row::-webkit-scrollbar-button {
+    display: none;
+}
+
+.modal img {
+    border: none;
+    cursor: pointer;
+    transition: 770ms ease-in-out;
+}
+

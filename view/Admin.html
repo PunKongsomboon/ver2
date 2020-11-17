@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Chakra+Petch:wght@300&family=Charm:wght@700&family=Lobster&family=Prompt:wght@200&family=Sriracha&display=swap" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="../public/css/Admin.css">
+    <script src="../public/script/Admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        p,a,button,h1,h2,h3,h4,h5,option,select,input{font-family: 'Prompt', sans-serif;}
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow">
+        <a class="navbar-brand" href="#"><img src="../public/image/lg.png" width="115px" height="30px"></a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" id="Adminlogout" style="cursor: pointer;">Sign Out<svg width="1em" height="1em"
+                            viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-5 pt-5">
+        <select name="" id="dropdownMenu" class="form-control col-2">
+            <option value="1">ข้อมูลรถโดยสาร</option>
+            <option value="2">ข้อมูลสถานที่</option>
+            <option value="3">ข้อมูลที่พัก</option>
+        </select>
+        <div class="d-flex my-4">
+            <div id="menushowcar">
+                <a class='nav-link px-3' style='cursor: pointer;' id='menuallcar'>ทั้งหมด</a>
+                <a class='nav-link px-3' id='menubus'
+                    style='border-left: 1px solid #ffffff; cursor: pointer;'>รถประจำทาง</a>
+                <a class='nav-link px-3' id='menutaxi'
+                    style='border-left: 1px solid #ffffff; cursor: pointer;'>รถรับจ้าง</a>
+            </div>
+            <div id="menushowplace">
+                <a class='nav-link px-3' style='cursor: pointer;' id="menuallplace">ทั้งหมด</a>
+                <a class='nav-link px-3' style='border-left: 1px solid #ffffff; cursor: pointer;'
+                    id="menunormal">ทั่วไป</a>
+                <a class='nav-link px-3' style='border-left: 1px solid #ffffff; cursor: pointer;' id="menutem">วัด</a>
+                <a class='nav-link px-3' style='border-left: 1px solid #ffffff; cursor: pointer;'
+                    id="menuen">สถานบันเทิง</a>
+                <a class='nav-link px-3' style='border-left: 1px solid #ffffff; cursor: pointer;'
+                    id="menunat">ที่ท่องเที่ยวธรรมชาติ</a>
+            </div>
+            <div id="menushowHotel">
+                <a class='nav-link px-3' style='border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; cursor: pointer;' id="menuallHotel">ทั้งหมด</a>
+            </div>
+        </div>
+        <div class="text-right mb-3">
+            <button id="btnAdd" type="button" class="btn btn-success btn-md"><svg width="1em" height="1em"
+                    viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path fill-rule="evenodd"
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg></button>
+        </div>
+        <table id="myTable" class="table table-light table-borderless table-hover text-center"
+            style="width: 100%;">
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal hide fade in" id="modelcar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100">เพิ่มข้อมูลรถโดยสาร</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnresetRunnum">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" name="carselect" id="radioBus" checked>รถประจำทาง
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" name="carselect" id="radioTaxi">รถรับจ้าง
+                            </label>
+                        </div>
+                    </div>
+                    <input type="text" id="txtIdcar" class="form-control mb-2" placeholder="รหัส" disabled>
+                    <input type="text" id="txtNamecar" class="form-control mb-2" placeholder="ชื่อรถ">
+                    <input type="text" id="txtPricecar" class="form-control mt-2" placeholder="ราคา">
+                    <input type="text" id="txtPointStartcar" class="form-control mt-2" placeholder="จุดเริ่มต้น">
+                    <input type="text" id="txtPointEndcar" class="form-control mt-2" placeholder="จุดปลายทาง">
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button id="btnSaveAddcar" type="button" class="btn btn-success">Save</button>
+                    <button type="button" id="btnClosecar" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modelEditcar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100">แก้ไขข้อมูลรถโดยสาร</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="EdittxtIdcar" class="form-control mb-2" placeholder="รหัส" disabled>
+                    <input type="text" id="EdittxtNamecar" class="form-control mb-2" placeholder="ชื่อรถ">
+                    <input type="text" id="EdittxtPricecar" class="form-control mt-2" placeholder="ราคา">
+                    <input type="text" id="EdittxtPointStartcar" class="form-control mt-2" placeholder="จุดเริ่มต้น">
+                    <input type="text" id="EdittxtPointEndcar" class="form-control mt-2" placeholder="จุดปลายทาง">
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button id="btnSaveEditcar" type="button" class="btn btn-success">Save</button>
+                    <button type="button" id="btnCloseEditcar" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modelplace" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100">เพิ่มข้อมูลสถานที่ท่องเที่ยว</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 d-flex">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" name="placeselect" id="radioNormal" checked>ทั่วไป
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" name="placeselect" id="radioTemplate">วัด
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" name="placeselect" id="radioEntertainment">สถานบันเทิง
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" name="placeselect" id="radioNatural">ที่ท่องเที่ยวธรรมชาติ
+                            </label>
+                        </div>
+                    </div>
+                    <input type="text" id="txtIdplace" class="form-control mb-2" placeholder="รหัส" disabled>
+                    <input type="text" id="txtNameplace" class="form-control mb-2" placeholder="ชื่อสถานที่">
+                    <input type="text" id="txtInfoplace" class="form-control mt-2" placeholder="ข้อมูลสถานที่">
+                    <label for="" class="mt-2">เวลาเปิดทำการ</label>
+                    <select name="" id="selectTimeOpen" class="form-control mt-2">
+                        <option value=""></option>
+                    </select>
+                    <label for="" class="mt-2">เวลาปิดทำการ</label>
+                    <select name="" id="selectTimeClose" class="form-control mt-2">
+                        <option value=""></option>
+                    </select>
+                    <label for="" class="mt-2">วันเปิดทำการ</label>
+                    <select name="" id="selectDaywork" class="form-control mt-2">
+                        <option value=""></option>
+                    </select>
+                    <input type="text" id="txtPriceplace" class="form-control mt-2" placeholder="ราคาเข้าชม">
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button id="btnSaveAdd" type="button" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
