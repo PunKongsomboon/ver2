@@ -11,8 +11,9 @@ $(document).ready(function () {
             "infoplace": "เป็นไร่ของบริษัทบุญรอดบริวเวอรี่ จำกัด ผู้ผลิตเบียร์สิงห์, ลีโอ ไร่บุญรอด ที่นี่เป็นสถานที่ท่องเที่ยวเชิงเกษตร บนพื้นที่นับพันไร่ ในบรรยากาศโอบล้อมด้วยภูเขา และ ธรรมชาติ ที่เพิ่งจะเปิดให้เข้าชมเมื่อไม่กี่ปีที่ผ่านมา",
             "timeOpen": "8AM",
             "timeClose": "6PM",
-            "Daywork": "ทุกวัน",
-            "priceplace": "100"
+            "CloseDay": "",
+            "priceplace": "100",
+            "LimitTime" : "20"
         }
     ];
 
@@ -23,8 +24,9 @@ $(document).ready(function () {
             "infoplace": "ออกแบบและก่อสร้างโดยอาจารย์เฉลิมชัย โฆษิตพิพัฒน์ ซึ่งปรารถนาจะสร้างวัดให้เหมือนเมืองสวรรค์ที่มนุษย์สัมผัสได้ เริ่มสร้างตั้งแต่ พ.ศ.2540 จากเดิมมีเนื้อที่3 ไร่",
             "timeOpen": "8AM",
             "timeClose": "5PM",
-            "Daywork": "ทุกวัน",
-            "priceplace": "0"
+            "CloseDay": "",
+            "priceplace": "0",
+            "LimitTime" : "20"
         },
         {
             "idplace": "22",
@@ -32,8 +34,9 @@ $(document).ready(function () {
             "infoplace": "วัดร่องเสือเต้น ตั้งอยู่หมู่บ้านร่องเสือเต้น ต.ริมกก อ.เมือง จ.เชียงราย โดยตั้งอยู่ริมแม่น้ำกก ฝั่งด้านซ้ายทางทิศตะวันออกของเทศบาลนครเมืองเชียงราย ไม่ไกลจากตัวเมืองเชียงรายมากนัก ในอดีตสถานที่แห่งนี้เคยเป็นที่ตั้งของวัดร้าง เมื่อ 80-100 ปีก่อน",
             "timeOpen": "7AM",
             "timeClose": "8PM",
-            "Daywork": "ทุกวัน",
-            "priceplace": "0"
+            "CloseDay": "",
+            "priceplace": "0",
+            "LimitTime" : "20"
         },
         {
             "idplace": "23",
@@ -41,8 +44,9 @@ $(document).ready(function () {
             "infoplace": "เริ่มก่อตั้งขึ้นในปี พ.ศ.2544 โดยคณะศรัทธาวัดห้วยปลากั้งเริ่มกันก่อตั้งเป็นสำนักสงฆ์ จนกระทั่งวันที่ 19 พฤศจิกายน 2548 ได้มีพระอาจารย์พบโชค ติสฺสวํโสได้เดินทางมาปฏิบัติธรรมและเริ่มมีการก่อตั้งศาสนวัตถุ เริ่มตั้งแต่กุฏิสงฆ์ ศาลาการเปรียญ หอฉัน เจดีย์และเมื่อวันที่ 24 กรกฎาคม 2552 ทางสำนักงานพุทธศาสนาแห่งชาติ ได้มีประกาศแต่งตั้งให้เป็นวัดโดยชื่อว่า วัดห้วยปลากั้ง โดยมีพระอธิการพบโชค ติสฺสวํโส เป็นเจ้าอาวาสรูปแรก ปัจจุบันวัดห้วยปลากั้งเป็นวัดที่มีศรัทธาจากต่างจังหวัด ต่างประเทศ เข้ามากราบไหว้นมัสการ และปฏิบัติธรรมเป็นจำนวนมาก ถือเป็นจุดกำเนิดพุทธศาสนาในเชียงรายแห่งหนึ่งที่สำคัญ ภายในวัดยังมีพระมหาพบโชคธรรมเจดีย์ 9 ชั้น ภายในมีพระโพธิสัตว์เจ้าแม่กวนอิมจำลองแกะสลักจากไม้หอม และแต่ละชั้นจะมีพระพุทธรูปประจำชั้นประดิษฐานอยู่",
             "timeOpen": "7AM",
             "timeClose": "9:30PM",
-            "Daywork": "ทุกวัน",
-            "priceplace": "0"
+            "CloseDay": "",
+            "priceplace": "0",
+            "LimitTime" : "20"
         }
     ];
 
@@ -53,8 +57,9 @@ $(document).ready(function () {
             "infoplace": "ร้านเหล้า",
             "timeOpen": "6PM",
             "timeClose": "12PM",
-            "Daywork": "ทุกวัน",
-            "priceplace": "0"
+            "CloseDay": "",
+            "priceplace": "0",
+            "LimitTime" : "20"
         },
         {
             "idplace": "32",
@@ -62,8 +67,9 @@ $(document).ready(function () {
             "infoplace": "ร้านเหล้า",
             "timeOpen": "6PM",
             "timeClose": "12PM",
-            "Daywork": "ทุกวัน",
-            "priceplace": "0"
+            "CloseDay": "",
+            "priceplace": "0",
+            "LimitTime" : "20"
         },
         {
             "idplace": "33",
@@ -71,8 +77,9 @@ $(document).ready(function () {
             "infoplace": "ร้านเหล้า",
             "timeOpen": "9PM",
             "timeClose": "2AM",
-            "Daywork": "ทุกวัน",
-            "priceplace": "0"
+            "CloseDay": "",
+            "priceplace": "0",
+            "LimitTime" : "20"
         },
     ]
 
@@ -83,8 +90,9 @@ $(document).ready(function () {
             "infoplace": "วนอุทยาน ถ้ำหลวง-ขุนน้ำนางนอน ตั้งอยู่ที่ตำบลโป่งผา อำเภอแม่สาย จังหวัดเชียงราย อยู่ในเขตป่าสงวนแห่งชาติป่าดอยนางนอน มีเนื้อที่ประมาณ 5,000 ไร่ มีพื้นที่สำหรับบริการนักท่องท่องอยู่ 2 แห่ง",
             "timeOpen": "24hours",
             "timeClose": "24hours",
-            "Daywork": "ทุกวัน",
-            "priceplace": "0"
+            "CloseDay": "เสาร์",
+            "priceplace": "0",
+            "LimitTime" : "20"
         },
         {
             "idplace": "42",
@@ -92,8 +100,9 @@ $(document).ready(function () {
             "infoplace": "ไร่ชาฉุยฟง แหล่งเพาะปลูกใบชาชื่อดัง ที่เปิดให้นักท่องเที่ยวได้เข้ามาสัมผัสกับบรรยากาศของไร่ชาได้อย่างใกล้ชิด อีกทั้งยังมีร้านคาเฟ่บริเวณด้านบนให้นักท่องเที่ยวได้มานั่งจิบชา",
             "timeOpen": "8:30AM",
             "timeClose": "5:30PM",
-            "Daywork": "ทุกวัน",
-            "priceplace": "0"
+            "CloseDay": "",
+            "priceplace": "0",
+            "LimitTime" : "20"
         }
     ]
 
@@ -108,6 +117,8 @@ $(document).ready(function () {
             "pricecar": "60",
             "pointStartcar": "มฟล",
             "pointEndcar": "ถนนคนเดิน",
+            "Capacity" : "",
+            "timeTravel" : "45"
 
         },
         {
@@ -116,6 +127,8 @@ $(document).ready(function () {
             "pricecar": "40",
             "pointStartcar": "มฟล",
             "pointEndcar": "เซนทรัล",
+            "Capacity" : "",
+            "timeTravel" : "45"
 
         },
         {
@@ -124,6 +137,8 @@ $(document).ready(function () {
             "pricecar": "20",
             "pointStartcar": "สนามบิน",
             "pointEndcar": "สถานีขนส่ง",
+            "Capacity" : "",
+            "timeTravel" : "45"
 
         },
         {
@@ -132,6 +147,8 @@ $(document).ready(function () {
             "pricecar": "0",
             "pointStartcar": "เซนทรัล",
             "pointEndcar": "มฟล",
+            "Capacity" : "",
+            "timeTravel" : "45"
 
         }
     ]
@@ -143,6 +160,8 @@ $(document).ready(function () {
             "pricecar": "100",
             "pointStartcar": "สนามบิน",
             "pointEndcar": "บ้านดู่",
+            "Capacity" : "4",
+            "timeTravel" : "45"
         },
         {
             "idcar": "22",
@@ -150,6 +169,8 @@ $(document).ready(function () {
             "pricecar": "270",
             "pointStartcar": "สนามบิน",
             "pointEndcar": "ห้วยชมพู",
+            "Capacity" : "4",
+            "timeTravel" : "45"
         },
         {
             "idcar": "23",
@@ -157,6 +178,8 @@ $(document).ready(function () {
             "pricecar": "650",
             "pointStartcar": "สนามบิน",
             "pointEndcar": "แม่สาย",
+            "Capacity" : "4",
+            "timeTravel" : "45"
         },
         {
             "idcar": "24",
@@ -164,6 +187,8 @@ $(document).ready(function () {
             "pricecar": "1500",
             "pointStartcar": "สนามบิน",
             "pointEndcar": "เชียงแสน",
+            "Capacity" : "4",
+            "timeTravel" : "45"
         }
     ]
 
@@ -185,6 +210,8 @@ $(document).ready(function () {
             { data: "pricecar", title: "ราคา" },
             { data: "pointStartcar", title: "จุดเริ่มต้น" },
             { data: "pointEndcar", title: "จุดปลายทาง" },
+            { data: "Capacity", title: "ความจุ" },
+            { data: "timeTravel", title: "ใช้เวลาเดินทาง / นาที" },
             { title: "Action", orderable: false, defaultContent: "<a class='btn btn-warning mx-auto'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
 
         ]
@@ -207,6 +234,8 @@ $(document).ready(function () {
                 { data: "pricecar", title: "ราคา" },
                 { data: "pointStartcar", title: "จุดเริ่มต้น" },
                 { data: "pointEndcar", title: "จุดปลายทาง" },
+                { data: "Capacity", title: "ความจุ" },
+                { data: "timeTravel", title: "ใช้เวลาเดินทาง / นาที" },
                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
             ]
         })
@@ -277,6 +306,8 @@ $(document).ready(function () {
                 { data: "pricecar", title: "ราคา" },
                 { data: "pointStartcar", title: "จุดเริ่มต้น" },
                 { data: "pointEndcar", title: "จุดปลายทาง" },
+                { data: "Capacity", title: "ความจุ" },
+                { data: "timeTravel", title: "ใช้เวลาเดินทาง / นาที" },
                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
             ]
         })
@@ -335,6 +366,8 @@ $(document).ready(function () {
                 { data: "pricecar", title: "ราคา" },
                 { data: "pointStartcar", title: "จุดเริ่มต้น" },
                 { data: "pointEndcar", title: "จุดปลายทาง" },
+                { data: "Capacity", title: "ความจุ" },
+                { data: "timeTravel", title: "ใช้เวลาเดินทาง / นาที" },
                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
             ]
         })
@@ -394,8 +427,9 @@ $(document).ready(function () {
                 { data: "infoplace", title: "ข้อมูลสถานที่" },
                 { data: "timeOpen", title: "เวลาเปิดทำการ" },
                 { data: "timeClose", title: "เวลาปิดทำการ" },
-                { data: "Daywork", title: "วันเปิดทำการ" },
+                { data: "CloseDay", title: "วันปิดทำการ" },
                 { data: "priceplace", title: "ราคาเข้าชม" },
+                { data: "LimitTime", title: "เวลาในการเที่ยว / นาที" },
                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
             ]
         });
@@ -414,8 +448,9 @@ $(document).ready(function () {
                 { data: "infoplace", title: "ข้อมูลสถานที่" },
                 { data: "timeOpen", title: "เวลาเปิดทำการ" },
                 { data: "timeClose", title: "เวลาปิดทำการ" },
-                { data: "Daywork", title: "วันเปิดทำการ" },
+                { data: "CloseDay", title: "วันปิดทำการ" },
                 { data: "priceplace", title: "ราคาเข้าชม" },
+                { data: "LimitTime", title: "เวลาในการเที่ยว / นาที" },
                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
             ]
         });
@@ -433,8 +468,9 @@ $(document).ready(function () {
                 { data: "infoplace", title: "ข้อมูลสถานที่" },
                 { data: "timeOpen", title: "เวลาเปิดทำการ" },
                 { data: "timeClose", title: "เวลาปิดทำการ" },
-                { data: "Daywork", title: "วันเปิดทำการ" },
+                { data: "CloseDay", title: "วันปิดทำการ" },
                 { data: "priceplace", title: "ราคาเข้าชม" },
+                { data: "LimitTime", title: "เวลาในการเที่ยว / นาที" },
                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
             ]
         });
@@ -452,8 +488,9 @@ $(document).ready(function () {
                 { data: "infoplace", title: "ข้อมูลสถานที่" },
                 { data: "timeOpen", title: "เวลาเปิดทำการ" },
                 { data: "timeClose", title: "เวลาปิดทำการ" },
-                { data: "Daywork", title: "วันเปิดทำการ" },
+                { data: "CloseDay", title: "วันปิดทำการ" },
                 { data: "priceplace", title: "ราคาเข้าชม" },
+                { data: "LimitTime", title: "เวลาในการเที่ยว / นาที" },
                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
             ]
         });
@@ -471,8 +508,9 @@ $(document).ready(function () {
                 { data: "infoplace", title: "ข้อมูลสถานที่" },
                 { data: "timeOpen", title: "เวลาเปิดทำการ" },
                 { data: "timeClose", title: "เวลาปิดทำการ" },
-                { data: "Daywork", title: "วันเปิดทำการ" },
+                { data: "CloseDay", title: "วันปิดทำการ" },
                 { data: "priceplace", title: "ราคาเข้าชม" },
+                { data: "LimitTime", title: "เวลาในการเที่ยว / นาที" },
                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
             ]
         });
@@ -548,6 +586,8 @@ $(document).ready(function () {
                                 { data: "pricecar", title: "ราคา" },
                                 { data: "pointStartcar", title: "จุดเริ่มต้น" },
                                 { data: "pointEndcar", title: "จุดปลายทาง" },
+                                { data: "Capacity", title: "ความจุ" },
+                                { data: "timeTravel", title: "ใช้เวลาเดินทาง / นาที" },
                                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
                             ]
                         });
@@ -638,6 +678,8 @@ $(document).ready(function () {
                                 { data: "pricecar", title: "ราคา" },
                                 { data: "pointStartcar", title: "จุดเริ่มต้น" },
                                 { data: "pointEndcar", title: "จุดปลายทาง" },
+                                { data: "Capacity", title: "ความจุ" },
+                                { data: "timeTravel", title: "ใช้เวลาเดินทาง / นาที" },
                                 { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
                             ]
                         });
@@ -748,6 +790,8 @@ $(document).ready(function () {
                     { data: "pricecar", title: "ราคา" },
                     { data: "pointStartcar", title: "จุดเริ่มต้น" },
                     { data: "pointEndcar", title: "จุดปลายทาง" },
+                    { data: "Capacity", title: "ความจุ" },
+                    { data: "timeTravel", title: "ใช้เวลาเดินทาง / นาที" },
                     { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
                 ]
             })
@@ -822,8 +866,9 @@ $(document).ready(function () {
                     { data: "infoplace", title: "ข้อมูลสถานที่" },
                     { data: "timeOpen", title: "เวลาเปิดทำการ" },
                     { data: "timeClose", title: "เวลาปิดทำการ" },
-                    { data: "Daywork", title: "วันเปิดทำการ" },
+                    { data: "CloseDay", title: "วันปิดทำการ" },
                     { data: "priceplace", title: "ราคาเข้าชม" },
+                    { data: "LimitTime", title: "เวลาในการเที่ยว / นาที" },
                     { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
                 ]
             });
@@ -842,7 +887,6 @@ $(document).ready(function () {
                     { title: "รหัส" },
                     { title: "ชื่อที่พัก" },
                     { title: "ราคาต่อคืน / ห้องปกติ" },
-                    { title: "อยู่แถวไหน" },
                     { title: "Action", orderable: false, defaultContent: "<a class='btn mx-auto btn-warning'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pen' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></a><a class='btn mx-3 btn-danger'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/></svg></button>" }
                 ]
             });
