@@ -48,7 +48,7 @@ $(document).ready(function () {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            window.location.replace("profile.html");
+            window.location.replace("/profile");
           }
         });
       }
@@ -56,7 +56,7 @@ $(document).ready(function () {
   });
 
   $("#btnBacktoViewplan").click(function () {
-    window.history.back();
+    window.location.replace("/Filter");
   });
 
 

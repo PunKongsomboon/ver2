@@ -60,7 +60,7 @@ $().ready(function () {
         let username = $("#txtUserlogin").val();
         let password = $("#txtPasslogin").val();
         if (username == "punonly" && password == "pun1509966") {
-            window.location.replace("Admin.html");
+            window.location.replace("/Admin");
         } else {
             $("body").toggleClass("signupsuccess");
             $("body").toggleClass("openlogout");
@@ -78,7 +78,7 @@ $().ready(function () {
         if (check == 1) {
             $("#pin").attr("data-toggle", "");
             $("#pin").attr("data-target", "");
-            $("#pin").attr("href", "Filter.html");
+            $("#pin").attr("href", "/Filter");
         } else {
             $("#pin").attr("href", "#");
             $("#pin").attr("data-toggle", "modal");

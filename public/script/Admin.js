@@ -1004,7 +1004,7 @@ $(document).ready(function () {
 
     // navbar menu sign out
     $("#Adminlogout").click(function () {
-        window.location.replace("index.html");
+        window.location.replace("/");
     });
 
 

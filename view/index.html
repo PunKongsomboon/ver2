@@ -12,8 +12,8 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../public/css/index.css">
-    <script src="../public/script/index.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="script/index.js"></script>
     <style>
         h1 {
             font-family: 'Lobster', cursive;
@@ -113,7 +113,7 @@
     <!--Main Navigation-->
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow">
-        <a class="navbar-brand" href="#"><img src="../public/image/lg.png" width="115px" height="30px"></a>
+        <a class="navbar-brand" href="#"><img src="image/lg.png" width="115px" height="30px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -121,16 +121,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item" id="profile">
-                    <a class="nav-link" href="profile.html">Profile</a>
+                    <a class="nav-link" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">contact</a>
+                    <a class="nav-link" href="/Contact">contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter" id="login">Sign
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" id="login">Sign
                         In<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -138,7 +138,7 @@
                         </svg></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="logout">Sign Out</a>
+                    <a class="nav-link" id="logout">Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -159,7 +159,7 @@
                         placeholder="จุดเริ่มต้น">
                     <input class="form-control mx-3 my-2 col-xl-3 col-md-3 col-sm-11 col-11" type="text"
                         placeholder="ปลายทาง"> -->
-                    <a type="button" class="btn btn-secondary btn-sm mx-2" style="height: fit-content;" id="pin">GO</a>
+                    <a type="button" class="btn btn-secondary btn-sm mx-2" style="height: fit-content;" id="pin" >GO</a>
                 </div>
             </div>
         </div>
@@ -177,7 +177,7 @@
                 <!--card1-->
                 <div class="fixed-slide col-12 shadow mx-auto bg-light rounded" style="overflow: auto; height: 500px;">
                     <div class="row justify-content-center">
-                        <div class="col-lg-12 col-md-9 col-12 m-3">
+                        <!-- <div class="col-lg-12 col-md-9 col-12 m-3">
                             <div class="card-container manual-flip">
                                 <div class="card">
                                     <div class="front">
@@ -188,9 +188,9 @@
                                                     information</button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!--back card-->
-                                    <div class="back align-items-end mask flex-center">
+                                    <!-- <div class="back align-items-end mask flex-center">
                                         <div class="content">
                                             <div class="main">
 
@@ -212,154 +212,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--card 2-->
-                        <div class="col-lg-12 col-md-9 col-12 m-3">
-                            <div class="card-container manual-flip">
-                                <div class="card">
-                                    <div class="front">
-                                        <div class="cover">
-                                            <img src="../public/image/13.jpg" />
-                                            <div class="card-img-overlay p-0 d-flex align-items-end mask flex-center">
-                                                <button class="btn btn-primary col-12 " onclick="rotateCard(this)">view
-                                                    information</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--back card-->
-                                    <div class="back">
-                                        <div class="content">
-                                            <div class="main">
-
-                                                <h4 class="text-center">ถนนคนเดินเชียงราย</h4>
-                                                <p class="text-center">ที่ตั้ง ถนนธนาลัย
-                                                    ช่วงสี่แยกสำนักงานยาสูบไปจนถึงสี่แยกธนาคารออมสิน ต.เวียง อ.เมือง
-                                                    จ.เชียงราย</p>
-                                                <h4 class="text-center">ข้อมูลสถานที่</h4>
-                                                <p class="text-center">ถนนคนเดินเชียงราย หรือ กาดเจียงฮายรำลึก
-                                                    ไฮไลท์ของที่นี่ไม่เหมือนใคร คือ
-                                                    จะมีลานไว้สำหรับให้นักท่องเที่ยวมาเต้นรำวงกัน
-                                                    ซึ่งเราจะเห็นคนเฒ่า คนแก่ มาเต้น
-                                                    ดูแล้วชวนให้นึกถึงวันวานเสียจริง</p>
-
-                                            </div>
-                                        </div>
-
-                                        <button class="btn btn-simple" rel="tooltip" title="Flip Card"
-                                            onclick="rotateCard(this)">Back</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--card 3-->
-                        <div class="col-lg-12 col-md-9 col-12 m-3">
-                            <div class="card-container manual-flip">
-                                <div class="card">
-                                    <div class="front">
-                                        <div class="cover">
-                                            <img src="../public/image/28.jpg" />
-                                            <div class="card-img-overlay p-0 d-flex align-items-end mask flex-center">
-                                                <button class="btn btn-primary col-12 " onclick="rotateCard(this)">view
-                                                    More</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--back card-->
-                                    <div class="back">
-                                        <div class="content">
-                                            <div class="main">
-
-                                                <h4 class="text-center">ไร่ชาฉุยฟง</h4>
-                                                <p class="text-center">ที่ตั้ง อำเภอแม่จัน จังหวัดเชียงราย</p>
-                                                <h4 class="text-center">ข้อมูลสถานที่</h4>
-                                                <p class="text-center">แหล่งปลูกชาชั้นดีของ บริษัท ฉุยฟงที จำกัด
-                                                    ซึ่งเป็นผู้ผลิตใบชารายใหญ่ที่สุดในจังหวัดเชียงรายมากว่า 40
-                                                    ปีแล้ว
-                                                    แน่นอนว่าใครอยากได้ชิมชาคุณภาพดีล่ะก็ต้องมาที่นี่เลยจ้า</p>
-
-                                            </div>
-                                        </div>
-
-                                        <button class="btn btn-simple" rel="tooltip" title="Flip Card"
-                                            onclick="rotateCard(this)">Back</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--card 4-->
-                        <div class="col-lg-12 col-md-9 col-12 m-3">
-                            <div class="card-container manual-flip">
-                                <div class="card">
-                                    <div class="front">
-                                        <div class="cover">
-                                            <img src="../public/image/02.jpg" />
-                                            <div class="card-img-overlay p-0 d-flex align-items-end mask flex-center">
-                                                <button class="btn btn-primary col-12 " onclick="rotateCard(this)">view
-                                                    information</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--back card-->
-                                    <div class="back">
-                                        <div class="content">
-                                            <div class="main">
-
-                                                <h4 class="text-center">ดอยแม่สลอง</h4>
-                                                <p class="text-center">ที่ตั้ง ดอยแม่สลอง ตำบลแม่สลองนอก
-                                                    อำเภอแม่ฟ้าหลวง
-                                                    จังหวัดเชียงราย</p>
-                                                <h4 class="text-center">ข้อมูลสถานที่</h4>
-                                                <p class="text-center">อบอวลไปด้วยวัฒนธรรมของชาวจีน
-                                                    ไม่ว่าจะเป็นอาหารการกิน
-                                                    เช่น ขาหมูยูนาน และในช่วงเดือนธันวาคมถึงกุมภาพันธ์จะมี
-                                                    ดอกนางพญาเสือโคร่งที่เป็นซากุระสีชมพูอมขาวพันธุ์ที่เล็กที่สุด
-                                                    จะบานสะพรั่งไปทั่วตลอดแนวทางขึ้นของดอย</p>
-                                            </div>
-                                        </div>
-
-                                        <button class="btn btn-simple" rel="tooltip" title="Flip Card"
-                                            onclick="rotateCard(this)">Back</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--card 5-->
-                        <div class="col-lg-12 col-md-9 col-12 m-3">
-                            <div class="card-container manual-flip">
-                                <div class="card">
-                                    <div class="front">
-                                        <div class="cover">
-                                            <img src="../public/image/17.jpg" />
-                                            <div class="card-img-overlay p-0 d-flex align-items-end mask flex-center">
-                                                <button class="btn btn-primary col-12 " onclick="rotateCard(this)">view
-                                                    information</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--back card-->
-                                    <div class="back">
-                                        <div class="content">
-                                            <div class="main">
-
-                                                <h4 class="text-center">แม่สาย</h4>
-                                                <p class="text-center">ที่ว่าการอำเภอแม่สาย เลขที่ 100
-                                                    ตำบลเวียงพางคำ
-                                                    อำเภอแม่สาย จังหวัดเชียงราย</p>
-                                                <h4 class="text-center">ข้อมูลสถานที่</h4>
-                                                <p class="text-center">อยู่ห่างจากตัวเมืองเชียงราย 61 กิโลเมตร
-                                                    เป็นอำเภอเหนือสุดของ ประเทศไทย ติดกับจังหวัดท่าขี้เหล็กของพม่า
-                                                    โดยมีแม่น้ำแม่สายเป็นพรมแดน
-                                                    มีสะพานเชื่อมเมืองทั้งสองเข้า ด้วยกัน
-                                                    ทั้งชาวไทยและชาวพม่าเดินทางไปมาหาสู่ค้าขายกันได้โดยเสรี</p>
-                                            </div>
-                                        </div>
-
-                                        <button class="btn btn-simple" rel="tooltip" title="Flip Card"
-                                            onclick="rotateCard(this)">Back</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
                         
                     </div>
                 </div>
@@ -372,7 +225,7 @@
 
                 <div class="fixed-slide col-12 shadow mx-auto bg-light plan rounded">
                     <div class="row justify-content-center">
-                        <div class="col-11 my-3">
+                        <!-- <div class="col-11 my-3">
                             <div class="col-12 mx-auto p-0 shadow rounded">
                                 <div class="row no-gutters">
                                     <div class="col-sm-5 col-xs-12">
@@ -392,51 +245,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="col-11 my-3">
-                            <div class="col-12 mx-auto p-0 shadow rounded">
-                                <div class="row no-gutters">
-                                    <div class="col-sm-5 col-xs-12">
-                                        <img src="../public/image/26.jpg" alt="" class="card-img-top">
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="col-sm-12">
-                                            <div class="card-body">
-                                                <h5 class="card-title">เวลา 3 วัน 2 คืน</h5>
-                                                <p class="card-text">งบประมาณ 5,000 บาทท่องเที่ยว 8 สถานที่</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 text-right">
-                                            <button class="btn btn-outline-secondary my-3">ดูรายละเอียด</button>
-                                            <button class="btn btn-outline-success my-3">เลือก</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-11 my-3">
-                            <div class="col-12 mx-auto p-0 shadow rounded">
-                                <div class="row no-gutters">
-                                    <div class="col-sm-5 col-xs-12">
-                                        <img src="../public/image/28.jpg" alt="" class="card-img-top">
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="col-sm-12">
-                                            <div class="card-body">
-                                                <h5 class="card-title">เวลา 3 วัน 2 คืน</h5>
-                                                <p class="card-text">งบประมาณ 5,000 บาทท่องเที่ยว 8 สถานที่</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 text-right">
-                                            <button class="btn btn-outline-secondary my-3">ดูรายละเอียด</button>
-                                            <button class="btn btn-outline-success my-3">เลือก</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -12,8 +12,8 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../public/css/profile.css">
-    <script src="../public/script/profile.js"></script>
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="script/profile.js"></script>
     <style>
         p,
         h1,
@@ -29,7 +29,7 @@
 
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow">
-        <a class="navbar-brand" href="#"><strong><img src="../public/image/lg.png" width="135px"
+        <a class="navbar-brand" href="#"><strong><img src="image/lg.png" width="135px"
                     height="30px"></strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,16 +38,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item" id="profile">
-                    <a class="nav-link" href="profile.html">Profile</a>
+                    <a class="nav-link" href="#">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">contact</a>
+                    <a class="nav-link" href="/Contact">contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter" id="login">Sign
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" id="login">Sign
                         In<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -55,7 +55,7 @@
                         </svg></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="logout">Sign Out</a>
+                    <a class="nav-link" id="logout">Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -65,7 +65,7 @@
         <div class="row">
             <div class="profile-area col-xl-4 col-lg-4 col-sm-12 text-center">
                 <div class="showProfileinfo col-12 my-5 py-5">
-                    <img src="../public/image/man.png" width="150px" height="150px">
+                    <img src="image/man.png" width="150px" height="150px">
                     <h5 class="my-5">Username : test1</h5>
                     <h5 class="my-5">E-mail : test1234@email.com</h5>
                     <h5 class="text-danger mx-auto col-6" id="btnChange-password">Change password</h5>
@@ -74,7 +74,7 @@
             <div class="showActivity-area col-xl-8 col-lg-8 col-sm-12">
                 <div class="Acitve-now">
                     <h4 class="text-success col-10 mx-auto">Active</h4>
-                    <div class="card col-12 mx-auto p-0 shadow rounded">
+                    <!-- <div class="card col-12 mx-auto p-0 shadow rounded">
                         <div class="row no-gutters">
                             <div class="col-sm-5 col-xs-12">
                                 <img src="../public/image/25.jpg" alt="" class="card-img-top">
@@ -91,12 +91,12 @@
                                 <button class="btn btn-success my-3">เสร็จสิ้น</button>
                             </div>
                         </div>
-                    </div>
-                    <hr class="mb-5 shadow-lg">
+                    </div> -->
+                    
                 </div>
                 <div class="history-activity">
                     <h4 class="text-danger col-10 mx-auto">History</h4>
-                    <div class="card col-12 mx-auto p-0 shadow rounded my-3">
+                    <!-- <div class="card col-12 mx-auto p-0 shadow rounded my-3">
                         <div class="row no-gutters">
                             <div class="col-sm-5 col-xs-12">
                                 <img src="../public/image/25.jpg" alt="" class="card-img-top">
@@ -111,23 +111,8 @@
                                 <button class="btn btn-secondary my-3">ดูรายละเอียด</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="card col-12 mx-auto p-0 shadow rounded my-3">
-                        <div class="row no-gutters">
-                            <div class="col-sm-5 col-xs-12">
-                                <img src="../public/image/25.jpg" alt="" class="card-img-top">
-                            </div>
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="card-body">
-                                    <h5 class="card-title">เวลา 3 วัน 2 คืน</h5>
-                                    <p class="card-text">งบประมาณ 5,000 บาทท่องเที่ยว 8 สถานที่</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-12 text-center my-auto">
-                                <button class="btn btn-secondary my-3">ดูรายละเอียด</button>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
+                    
 
                 </div>
             </div>
