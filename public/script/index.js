@@ -40,7 +40,7 @@ function rotateCard(btn) {
 //     loginWrapper.classList.toggle('open');
 // });
 
-$("#openProfile").click(function(){
+$("#btnSignin").click(function () {
     alert("test");
     $('body').toggleClass("openProfile");
     $('#exampleModalCenter').modal('show')
@@ -49,41 +49,82 @@ $("#openProfile").click(function(){
 
 // hide card area and modal sign in
 $().ready(function () {
-    var check = 0;
+    // var check = 0;
     $("body").toggleClass("visibilitybtn");
     $('.btn').removeClass("active");
     $("#btnslide").click(function () {
         $("body").toggleClass("open");
     });
 
-    $('#openProfile').click(function () {
+    $('#btnSignin').click(function () {
+        // alert("test");
         let username = $("#txtUserlogin").val();
         let password = $("#txtPasslogin").val();
-        if (username == "punonly" && password == "pun1509966") {
-            window.location.replace("/Admin");
-        } else {
-            $("body").toggleClass("signupsuccess");
-            $("body").toggleClass("openlogout");
-            $("body").toggleClass("closelogin");
-            check = 1;
+        if ($("#checkbox").is(':checked')) {
+            // alert("Remember me");
+
         }
+        $.ajax({
+            method: 'POST',
+            url: '/SignIn',
+            data: { username: username, password: password }
+        }).done(function (data, state, xhr) {
+            // alert(data);
+            if (data.user_role == 1) {
+                window.location.replace("/Admin");
+            } else {
+                $("body").toggleClass("signupsuccess");
+                $("body").toggleClass("openlogout");
+                $("body").toggleClass("closelogin");
+            }
+        }).fail(function (xhr, state) {
+            alert(xhr.responeText);
+        });
+        
     });
+
+
+    $('#btnSignup').click(function () {
+        // alert("ok");
+        const signup_email = $("#txtSignup_email").val();
+        const signup_username = $("#txtSignup_username").val();
+        const signup_password = $("#txtSignup_password").val();
+
+        if (signup_email != "" && signup_username != "") {
+            if (signup_password != "") {
+                // alert(signup_email+" "+signup_username+" "+signup_password);
+                $.ajax({
+                    method: 'POST',
+                    url: '/SignUp',
+                    data: { username: signup_username, password: signup_password, email: signup_email, role: 2 }
+                }).done(function (data, state, xhr) {
+                    
+                }).fail(function (xhr, state) {
+                    alert(xhr.responeText);
+                });
+            }
+        }
+
+    });
+
     $("#logout").click(function () {
         $("body").toggleClass("signupsuccess");
         $("body").toggleClass("openlogout");
         $("body").toggleClass("closelogin");
-        check = 0;
+        // check = 0;
     });
+
     $("#pin").click(function () {
-        if (check == 1) {
-            $("#pin").attr("data-toggle", "");
-            $("#pin").attr("data-target", "");
-            $("#pin").attr("href", "/Filter");
-        } else {
-            $("#pin").attr("href", "#");
-            $("#pin").attr("data-toggle", "modal");
-            $("#pin").attr("data-target", "#exampleModalCenter");
-        }
+
+        // if (check == 1) {
+        //     $("#pin").attr("data-toggle", "");
+        //     $("#pin").attr("data-target", "");
+        //     $("#pin").attr("href", "/Filter");
+        // } else {
+        //     $("#pin").attr("href", "#");
+        //     $("#pin").attr("data-toggle", "modal");
+        //     $("#pin").attr("data-target", "#exampleModalCenter");
+        // }
     });
 });
 

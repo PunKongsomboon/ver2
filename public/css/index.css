@@ -54,7 +54,7 @@ body {
   width: 100%;
 }
 
-.signin-active #btnsignin {
+.signin-active #navsignin {
   padding-bottom: 10px;
   color: #ffffff;
   text-decoration: none;
@@ -63,7 +63,7 @@ body {
   cursor: pointer;
 }
 
-.signin-inactive #btnsignin {
+.signin-inactive #navsignin {
   padding-bottom: 0;
   color: rgba(255, 255, 255, .3);
   text-decoration: none;
@@ -71,7 +71,7 @@ body {
   cursor: pointer;
 }
 
-.signup-active #btnsignup {
+.signup-active #navsignup {
   cursor: pointer;
   color: #ffffff;
   text-decoration: none;
@@ -79,7 +79,7 @@ body {
   padding-bottom: 10px;
 }
 
-.signup-inactive #btnsignup {
+.signup-inactive #navsignup {
   cursor: pointer;
   color: rgba(255, 255, 255, .3);
   text-decoration: none;
@@ -334,7 +334,7 @@ label {
   background-color: rgba(255, 255, 255, 1);
 }
 
-#btnsignup.btn-signup:hover, #btnsignin.btn-signin:hover {
+#navsignup.btn-signup:hover, #navsignin.btn-signin:hover {
   cursor: pointer;
   background-color: #829EB4;
   transition: background-color .5s;
@@ -361,14 +361,14 @@ label {
   opacity: 0;
 }
 
-.forgot #btnsignin {
+.forgot #navsignin {
   color: rgba(255, 255, 255, .3);
   font-weight: 400;
   font-size: 13px;
   text-decoration: none;
 }
 
-.forgot #btnsignup {
+.forgot #navsignup {
   color: rgba(255, 255, 255, .3);
   font-weight: 400;
   font-size: 13px;
