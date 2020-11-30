@@ -1,18 +1,4 @@
 
-//navbar
-$(document).ready(function () {
-    $(window).scroll(function () {
-        var scroll = $(window).scrollTop();
-        if (scroll > 100) {
-            $(".navbar").css("background", "#578097");
-            $(".navbar").style
-        }
-        else if (scroll < 100) {
-            $(".navbar").css("background", "none");
-
-        }
-    })
-})
 
 
 //card
@@ -40,15 +26,28 @@ function rotateCard(btn) {
 //     loginWrapper.classList.toggle('open');
 // });
 
-$("#btnSignin").click(function () {
-    alert("test");
-    $('body').toggleClass("openProfile");
-    $('#exampleModalCenter').modal('show')
-});
-
 
 // hide card area and modal sign in
-$().ready(function () {
+$(document).ready(function () {
+    // alert(localStorage.id);
+    if (localStorage.id == undefined || localStorage.id == 0) {
+
+    } else {
+        $("body").toggleClass("signupsuccess");
+        $("body").toggleClass("openlogout");
+        $("body").toggleClass("closelogin");
+    }
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+        if (scroll > 100) {
+            $(".navbar").css("background", "#578097");
+            $(".navbar").style
+        }
+        else if (scroll < 100) {
+            $(".navbar").css("background", "none");
+
+        }
+    })
     // var check = 0;
     $("body").toggleClass("visibilitybtn");
     $('.btn').removeClass("active");
@@ -70,26 +69,39 @@ $().ready(function () {
             data: { username: username, password: password }
         }).done(function (data, state, xhr) {
             // alert(data);
-            if (data.user_role == 1) {
+            localStorage.id = data[0].user_ID;
+            // alert(data[0].user_Role);
+            if (data[0].user_Role == 1) {
                 window.location.replace("/Admin");
             } else {
+                $("#txtUserlogin").val("");
+                $("#txtPasslogin").val("");
                 $("body").toggleClass("signupsuccess");
                 $("body").toggleClass("openlogout");
                 $("body").toggleClass("closelogin");
+                $('#ModalSignin').modal('hide');
             }
         }).fail(function (xhr, state) {
-            alert(xhr.responeText);
+            $("#txtUserlogin").val("");
+            $("#txtPasslogin").val("");
+            alert("Usernmae or password wrong");
         });
-        
+
+    });
+
+    $("#btnSignin").click(function () {
+        // alert("test");
+        $('body').toggleClass("openProfile");
+        $('#ModalSignin').modal('show');
     });
 
 
-    $('#btnSignup').click(function () {
-        // alert("ok");
+    $("#formSignUp").submit(function (e) {
+        e.preventDefault();
         const signup_email = $("#txtSignup_email").val();
         const signup_username = $("#txtSignup_username").val();
         const signup_password = $("#txtSignup_password").val();
-
+        
         if (signup_email != "" && signup_username != "") {
             if (signup_password != "") {
                 // alert(signup_email+" "+signup_username+" "+signup_password);
@@ -98,16 +110,45 @@ $().ready(function () {
                     url: '/SignUp',
                     data: { username: signup_username, password: signup_password, email: signup_email, role: 2 }
                 }).done(function (data, state, xhr) {
-                    
+                    // alert(data);
+                    $.ajax({
+                        method: 'POST',
+                        url: '/SignIn',
+                        data: { username: signup_username, password: signup_password }
+                    }).done(function (data, state, xhr) {
+                        // alert(data);
+                        localStorage.id = data[0].user_ID;
+                        // alert(data[0].user_Role);
+                        $("#txtSignup_email").val("");
+                        $("#txtSignup_username").val(""); 
+                        $("#txtSignup_password").val("");
+                        $("body").toggleClass("signupsuccess");
+                        $("body").toggleClass("openlogout");
+                        $("body").toggleClass("closelogin");
+                        $('#ModalSignin').modal('hide');
+                        
+                    }).fail(function (xhr, state) {
+                        $("#txtUserlogin").val("");
+                        $("#txtPasslogin").val("");
+                        alert("Usernmae or password wrong");
+                    });
+
+
                 }).fail(function (xhr, state) {
                     alert(xhr.responeText);
                 });
             }
         }
-
     });
 
+    // $('#btnSignup').click(function () {
+    //     // alert("ok");
+    //     
+
+    // });
+
     $("#logout").click(function () {
+        localStorage.id = 0;
         $("body").toggleClass("signupsuccess");
         $("body").toggleClass("openlogout");
         $("body").toggleClass("closelogin");
@@ -123,25 +164,27 @@ $().ready(function () {
         // } else {
         //     $("#pin").attr("href", "#");
         //     $("#pin").attr("data-toggle", "modal");
-        //     $("#pin").attr("data-target", "#exampleModalCenter");
+        //     $("#pin").attr("data-target", "#ModalSignin");
         // }
+    });
+
+    $(function () {
+        $(".btn").click(function () {
+            $(".form-signin").toggleClass("form-signin-left");
+            $(".form-signup").toggleClass("form-signup-left");
+            $(".frame").toggleClass("frame-long");
+            $(".signup-inactive").toggleClass("signup-active");
+            $(".signin-active").toggleClass("signin-inactive");
+            $(".forgot").toggleClass("forgot-left");
+            $(this).removeClass("idle").addClass("active");
+        });
     });
 });
 
 
 
 // animation in modal
-$(function () {
-    $(".btn").click(function () {
-        $(".form-signin").toggleClass("form-signin-left");
-        $(".form-signup").toggleClass("form-signup-left");
-        $(".frame").toggleClass("frame-long");
-        $(".signup-inactive").toggleClass("signup-active");
-        $(".signin-active").toggleClass("signin-inactive");
-        $(".forgot").toggleClass("forgot-left");
-        $(this).removeClass("idle").addClass("active");
-    });
-});
+
 
 
 

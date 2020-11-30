@@ -36,7 +36,7 @@
 
 <body>
     <!-- Modal login -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    <div class="modal fade" id="ModalSignin" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -78,11 +78,11 @@
                                     <div class="btn-animate">
                                         <a class="btn-signin"
                                             style="color: white; text-decoration: none; cursor: pointer;"
-                                            id="btnSignin" data-dismiss="modal">Sign in</a>
+                                            id="btnSignin">Sign in</a>
                                     </div>
                                 </form>
 
-                                <form class="form-signup" name="form" class="col-12">
+                                <form id="formSignUp"  class="form-signup" class="col-12" enctype="multipart/form-data" method="POST">
                                     <label for="email">Email</label>
                                     <input class="form-styling" type="email" id="txtSignup_email" required>
                                     <label for="username">Username</label>
@@ -90,7 +90,7 @@
                                     <label for="password">Password</label>
                                     <input class="form-styling" type="password" id="txtSignup_password" required>
                                     <button class="btn-signup"
-                                        id="btnSignup" style="color: white; text-decoration: none; cursor: pointer;">Sign Up</button>
+                                        id="btnSignup" style="color: white; text-decoration: none; cursor: pointer;" type="submit">Sign Up</button>
                                 </form>
 
 
@@ -131,7 +131,7 @@
                     <a class="nav-link" href="/Contact">contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" id="login">Sign
+                    <a class="nav-link" data-toggle="modal" data-target="#ModalSignin" id="login">Sign
                         In<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"

@@ -816,6 +816,7 @@ $(document).ready(function () {
 
     // navbar menu sign out
     $("#Adminlogout").click(function () {
+        localStorage.id = 0;
         window.location.replace("/");
     });
 
