@@ -16,3 +16,28 @@ content-type: application/json
     "username": "punonly",
     "password": "21072643"
 }
+
+###
+POST  http://localhost:3000/DataCar
+content-type: application/json
+
+{
+    "type": 2
+}
+
+
+###
+POST http://localhost:3000/Addcar
+content-type: application/json
+
+{
+    "name_car": "รถสองแถว",
+    "price_car": "200",
+    "capacity": "12"
+}
+###
+POST http://localhost:3000/DataPlace
+content-type: application/json
+
+
+

@@ -3,6 +3,7 @@ const mysql = require("mysql");
 const config = require("./dbConfig.js");
 const bcrypt = require("bcrypt");
 const path = require("path");
+const { send } = require("process");
 
 const app = express();
 const con = mysql.createConnection(config);
@@ -64,12 +65,12 @@ app.post("/SignIn", function (req, res) {
                 res.status(401).send("Username wrong");
             } else {
                 bcrypt.compare(password, result[0].user_Password, function (err, resp) {
-                    if(err){
+                    if (err) {
                         console.log(err);
                         res.status(500).send("Compare error");
-                    }else if(resp){
+                    } else if (resp) {
                         res.send(result);
-                    }else {
+                    } else {
                         res.status(401).send("Password wrong");
                     }
                 });
@@ -107,12 +108,87 @@ app.get("/Filter", function (req, res) {
     res.sendFile(path.join(__dirname, "/view/Filter.html"));
 })
 
-app.get("/DataPlace", function (req, res) {
+app.post("/DataPlace", function (req, res) {
+    const request_type = req.body.type;
+    console.log(request_type);
+    if (request_type == undefined) {
+        const sql = "SELECT * FROM place";
+        con.query(sql, function (err, result) {
+            if(err){
+                console.log(err);
+                res.status(500).send("Database error");
+            }else {
+                res.send(result);
+            }
+        });
+    }
+});
+
+app.post("/DataCar", function (req, res) {
+    const request_type = req.body.type;
+    console.log(request_type);
+    if (request_type == undefined) {
+        const sql = "SELECT * FROM car";
+        con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
+                res.send(result);
+            }
+        });
+    } else if (request_type == 1) {
+        const sql = "SELECT car.carID , car.name_car , car.price_car , car.capacity , car.TypecarID , typecar.TypecarID , typecar.nameType_car FROM car , typecar WHERE car.TypecarID = typecar.TypecarID AND car.TypecarID =1";
+        con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
+                res.send(result);
+            }
+        });
+    } else if (request_type == 2) {
+        const sql = "SELECT car.carID , car.name_car , car.price_car , car.capacity , car.TypecarID , typecar.TypecarID , typecar.nameType_car FROM car , typecar WHERE car.TypecarID = typecar.TypecarID AND car.TypecarID =2";
+        con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
+                res.send(result);
+            }
+        });
+    }
+    // res.send("done");
 
 });
 
-app.get("/DataCar", function (req, res) {
+app.get("/typecar", function (req, res) {
+    const sql = "SELECT nameType_car FROM typecar";
+    con.query(sql, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
 
+app.post("/Addcar", function (req, res) {
+    const { name_car, price_car, capacity, TypecarID } = req.body;
+    const sql = "INSERT INTO car (name_car , price_car , capacity , TypecarID) VALUES (?,?,?,?)";
+    con.query(sql, [name_car, price_car, capacity, TypecarID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                console.log("INSERT ERROR");
+            } else {
+                res.send("done");
+            }
+        }
+    });
 });
 
 app.get("/DataHotel", function (req, res) {
