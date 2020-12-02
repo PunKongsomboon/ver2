@@ -36,8 +36,19 @@ content-type: application/json
     "capacity": "12"
 }
 ###
-POST http://localhost:3000/DataPlace
+POST http://localhost:3000/Editcar
 content-type: application/json
 
+{
+    "carID": 12,
+    "name_car": "taxi",
+    "price_car": 500,
+    "capacity": 4,
+    "TypecarID": 2
+}
 
+###const { carID , name_car, price_car, capacity, TypecarID } = req.body;
+
+GET http://localhost:3000/DataHotel
+content-type: application/json
 

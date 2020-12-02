@@ -98,33 +98,10 @@
                         d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg></button>
         </div>
-        <table id="myTable" class="table table-light table-borderless table-hover text-center" style="width: 100%;">
-        </table>
+        <table id="myTable" class="table table-light table-borderless table-hover text-center"></table>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modelAddhotel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title w-100">เพิ่มที่พัก</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">  
-                        
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="btnSaveAddhotel" type="button" class="btn btn-success">Save</button>
-                    <button type="button" id="btnCloseAddhotel" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="modal hide fade in" id="modelcar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
         aria-hidden="true" data-keyboard="false" data-backdrop="static">
@@ -137,21 +114,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3 d-flex justify-content-center">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" name="carselect" id="radioBus" checked>รถประจำทาง
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" name="carselect" id="radioTaxi">รถรับจ้าง
-                            </label>
-                        </div>
-                    </div>
+                    <select name="" id="AddTypecar" class="form-control mb-3"></select>
                     <input type="text" id="txtNamecar" class="form-control mb-2" placeholder="ชื่อรถ">
-                    <input type="text" id="txtPricecar" class="form-control mt-2" placeholder="ราคา">
-                    <input type="text" id="txtCapacity" class="form-control mt-2" placeholder="ความจุ">
+                    <input type="number" id="txtPricecar" class="form-control mt-2" placeholder="ราคา">
+                    <input type="number" id="txtCapacity" class="form-control mt-2" placeholder="ความจุ">
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button id="btnSaveAddcar" type="button" class="btn btn-success">Save</button>
@@ -177,7 +143,7 @@
                     <input type="text" id="EdittxtNamecar" class="form-control mb-2" placeholder="ชื่อรถ">
                     <input type="text" id="EdittxtPricecar" class="form-control mt-2" placeholder="ราคา">
                     <input type="number" id="EdittxtCapacity" class="form-control mt-2" placeholder="ความจุ">
-                    <select name="" id="EdittxtType" class="form-control mt-3"></select>
+                    <select name="" id="EditTypecar" class="form-control mt-3"></select>
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button id="btnSaveEditcar" type="button" class="btn btn-success">Save</button>
@@ -195,52 +161,158 @@
                 <div class="modal-header">
                     <h5 class="modal-title w-100">เพิ่มข้อมูลสถานที่ท่องเที่ยว</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" id="btnClosemodalplace">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAddplace" method="POST" enctype="multipart/form-data">
+                        <label for="" class="mt-2">ประเภทสถานที่ท่องเที่ยว</label>
+                        <select id="AddTypeplace" class="form-control mb-3" name="addtypeplace"></select>
+                        <input type="text" id="txtNameplace" class="form-control mb-2" placeholder="ชื่อสถานที่"
+                            name="Nameplace" required>
+                        <input type="file" name="fileupload" id="gallery-photo-add" required multiple><br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="gallery col-12"></div>
+                            </div>
+                        </div>
+                        <!-- <button type="submit" class="btn btn-primary">upload</button> -->
+                        <input type="text" id="txtInfoplace" class="form-control mt-2" placeholder="ข้อมูลสถานที่"
+                            name="Infoplace" required>
+                        <label for="" class="mt-2">เวลาเปิดทำการ</label>
+                        <input type="time" class="form-control text-center mt-2" id="selectTimeOpen" name="timeopen"
+                            required>
+                        <label for="" class="mt-2">เวลาปิดทำการ</label>
+                        <input type="time" class="form-control text-center mt-2" id="selectTimeClose" name="timeclose"
+                            required>
+                        <label for="" class="mt-2">วันเปิดทำการ</label>
+                        <select class="form-control mb-3" name="Dayclose">
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                            <option value="saturday">Saturday</option>
+                            <option value="sunday">sunday</option>
+                            <option value="none">None</option>
+                        </select>
+                        <!-- <input type="date" class="form-control text-center mt-2" id="selectDayClose" name="Dayclose"> -->
+                        <input type="number" id="txtPriceplace" class="form-control mt-2" placeholder="ราคาเข้าชม"
+                            name="Priceplace" required>
+                        <div class="modal-footer justify-content-center">
+                            <button id="btnSaveAddplace" type="submit" class="btn btn-success">Save</button>
+                            <button type="button" class="btn btn-secondary" id="btnCloseAddplace"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modelEditplace" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100">แก้ไขข้อมูลสถานที่ท่องเที่ยว</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3 d-flex">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" name="placeselect" id="radioNormal" checked>ทั่วไป
-                            </label>
+                    <label for="" class="mt-2">ประเภทสถานที่ท่องเที่ยว</label>
+                    <select id="EditTypeplace" class="form-control mb-3"></select>
+                    <input type="text" id="EdittxtIDplace" class="form-control mb-2" disabled>
+                    <input type="text" id="EdittxtNameplace" class="form-control mb-2" placeholder="ชื่อสถานที่">
+                    <!-- <input type="file" name="fileupload" id="gallery-photo-add" required multiple><br> -->
+                    <!-- <div class="container">
+                        <div class="row">
+                            <div class="gallery col-12"></div>
                         </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" name="placeselect" id="radioTemplate">วัด
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" name="placeselect" id="radioEntertainment">สถานบันเทิง
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" name="placeselect" id="radioNatural">ที่ท่องเที่ยวธรรมชาติ
-                            </label>
-                        </div>
-                    </div>
-                    <input type="text" id="txtIdplace" class="form-control mb-2" placeholder="รหัส" disabled>
-                    <input type="text" id="txtNameplace" class="form-control mb-2" placeholder="ชื่อสถานที่">
-                    <input type="text" id="txtInfoplace" class="form-control mt-2" placeholder="ข้อมูลสถานที่">
+                    </div> -->
+                    <input type="text" id="EdittxtInfoplace" class="form-control mt-2" placeholder="ข้อมูลสถานที่">
                     <label for="" class="mt-2">เวลาเปิดทำการ</label>
-                    <select name="" id="selectTimeOpen" class="form-control mt-2">
-                        <option value=""></option>
-                    </select>
+                    <input type="time" class="form-control text-center mt-2" id="EditTimeOpen">
                     <label for="" class="mt-2">เวลาปิดทำการ</label>
-                    <select name="" id="selectTimeClose" class="form-control mt-2">
-                        <option value=""></option>
-                    </select>
+                    <input type="time" class="form-control text-center mt-2" id="EditTimeClose">
                     <label for="" class="mt-2">วันเปิดทำการ</label>
-                    <select name="" id="selectDaywork" class="form-control mt-2">
-                        <option value=""></option>
+                    <select class="form-control mb-3" id="EditDayclose">
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">sunday</option>
+                        <option value="none">None</option>
                     </select>
-                    <input type="text" id="txtPriceplace" class="form-control mt-2" placeholder="ราคาเข้าชม">
+                    <input type="number" id="EdittxtPriceplace" class="form-control mt-2" placeholder="ราคาเข้าชม">
+                    <div class="modal-footer justify-content-center">
+                        <button id="btnSaveEditplace" class="btn btn-success">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-footer justify-content-center">
-                    <button id="btnSaveAdd" type="button" class="btn btn-success">Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modelAddhotel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100">เพิ่มที่พัก</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" id="btnClosemodalhotel">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form id="formAddhotel" method="POST" enctype="multipart/form-data">
+                            <input type="text" id="txtNamehotel" class="form-control mb-2" placeholder="ชื่อที่พัก"
+                                name="Namehotel" required>
+                            <input type="file" name="fileupload" id="gallery-hotel-add" required multiple><br>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="galleryhotel col-12"></div>
+                                </div>
+                            </div>
+                            <input type="number" id="txtPricehotel" class="form-control mt-2" placeholder="ราคาต่อคืนห้องปกติ"
+                                name="Pricehotel" required>
+                            <div class="modal-footer justify-content-center">
+                                <button id="btnSaveAddhotel" type="submit" class="btn btn-success">Save</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modelEdithotel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100">แก้ไขที่พัก</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnSaveEdithotel" type="button" class="btn btn-success">Save</button>
+                    <button type="button" id="btnCloseEdithotel" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

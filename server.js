@@ -3,7 +3,9 @@ const mysql = require("mysql");
 const config = require("./dbConfig.js");
 const bcrypt = require("bcrypt");
 const path = require("path");
+const upload = require("./uploadConfig.js");
 const { send } = require("process");
+const { CONNREFUSED } = require("dns");
 
 const app = express();
 const con = mysql.createConnection(config);
@@ -114,14 +116,137 @@ app.post("/DataPlace", function (req, res) {
     if (request_type == undefined) {
         const sql = "SELECT * FROM place";
         con.query(sql, function (err, result) {
-            if(err){
+            if (err) {
                 console.log(err);
                 res.status(500).send("Database error");
-            }else {
+            } else {
+                res.send(result);
+            }
+        });
+    } else if (request_type == 1) {
+        const sql = "SELECT place.placeID , place.name_place , place.pic_place , place.info_place , place.price_place , place.timeopen_place , place.timeclose_place , place.CloseDay , place.typeplaceID , typeplace.typeplaceID , typeplace.nametype_place FROM place , typeplace WHERE place.typeplaceID = typeplace.typeplaceID AND place.typeplaceID = 1";
+        con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
+                res.send(result);
+            }
+        });
+    } else if (request_type == 2) {
+        const sql = "SELECT place.placeID , place.name_place , place.pic_place , place.info_place , place.price_place , place.timeopen_place , place.timeclose_place , place.CloseDay , place.typeplaceID , typeplace.typeplaceID , typeplace.nametype_place FROM place , typeplace WHERE place.typeplaceID = typeplace.typeplaceID AND place.typeplaceID = 2";
+        con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
+                res.send(result);
+            }
+        });
+    } else if (request_type == 3) {
+        const sql = "SELECT place.placeID , place.name_place , place.pic_place , place.info_place , place.price_place , place.timeopen_place , place.timeclose_place , place.CloseDay , place.typeplaceID , typeplace.typeplaceID , typeplace.nametype_place FROM place , typeplace WHERE place.typeplaceID = typeplace.typeplaceID AND place.typeplaceID = 3";
+        con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
+                res.send(result);
+            }
+        });
+    } else if (request_type == 4) {
+        const sql = "SELECT place.placeID , place.name_place , place.pic_place , place.info_place , place.price_place , place.timeopen_place , place.timeclose_place , place.CloseDay , place.typeplaceID , typeplace.typeplaceID , typeplace.nametype_place FROM place , typeplace WHERE place.typeplaceID = typeplace.typeplaceID AND place.typeplaceID = 4";
+        con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
                 res.send(result);
             }
         });
     }
+});
+
+app.get("/typeplace", function (req, res) {
+    const sql = "SELECT TypeplaceID , nametype_place FROM typeplace";
+    con.query(sql, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post("/Addplace", function (req, res) {
+    upload(req, res, function (err) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Upload error");
+        } else {
+            const filename = req.files;
+            let arrayimage = "";
+            for (let i = 0; i < filename.length; i++) {
+                arrayimage += filename[i].filename + ",";
+            }
+            console.log(arrayimage);
+            // res.send("done");
+            const { addtypeplace, Nameplace, Infoplace, timeopen, timeclose, Dayclose, Priceplace } = req.body;
+            // res.send(Nameplace+" "+Infoplace+" "+timeopen+" "+timeclose+" "+Dayclose+" "+Priceplace+" "+filename+" "+addtypeplace);
+            const sql = "INSERT INTO place (name_place , pic_place , info_place , price_place , timeopen_place , timeclose_place , CloseDay , typeplaceID) VALUES (?,?,?,?,?,?,?,?)";
+            con.query(sql, [Nameplace, arrayimage, Infoplace, Priceplace, timeopen, timeclose, Dayclose, addtypeplace], function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send("Database error");
+                } else {
+                    if (result.affectedRows == 1) {
+                        res.send("upload done");
+                    } else {
+                        res.send("upload fail");
+                    }
+                }
+            });
+        }
+    });
+});
+
+app.post("/Editplace", function (req, res) {
+    const { placeID, name_place, info_place, price_place, timeopen_place, timeclose_place, CloseDay, typeplaceID } = req.body;
+    // console.log(placeID+" "+name_place+" "+info_place+" "+price_place+" "+timeopen_place+" "+timeclose_place+" "+CloseDay+" "+typeplaceID);
+    const sql = "UPDATE place SET name_place=? , info_place=? , price_place=? , timeopen_place=? , timeclose_place=? , CloseDay=? , typeplaceID=? WHERE placeID=?";
+    con.query(sql, [name_place, info_place, price_place, timeopen_place, timeclose_place, CloseDay, typeplaceID, placeID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                console.log("Update ERROR");
+            } else {
+                // console.log(result);
+                res.send("done");
+            }
+        }
+    });
+});
+
+app.post("/Deleteplace", function (req, res) {
+    const { placeID } = req.body;
+    console.log(placeID);
+
+    const sql = "DELETE FROM place WHERE placeID=?";
+    con.query(sql, [placeID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                console.log(err);
+                res.status(500).send("Delete error");
+            } else {
+                res.send("done");
+            }
+        }
+    });
 });
 
 app.post("/DataCar", function (req, res) {
@@ -162,8 +287,28 @@ app.post("/DataCar", function (req, res) {
 
 });
 
+app.post("/Deletecar", function (req, res) {
+    const IDcar = req.body.IDcar;
+    console.log(IDcar);
+
+    const sql = "DELETE FROM car WHERE carID = ?";
+    con.query(sql, [IDcar], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                res.status(500).send("Delete error");
+            } else {
+                res.send("done");
+            }
+        }
+    });
+
+});
+
 app.get("/typecar", function (req, res) {
-    const sql = "SELECT nameType_car FROM typecar";
+    const sql = "SELECT TypecarID , nameType_car FROM typecar";
     con.query(sql, function (err, result) {
         if (err) {
             console.log(err);
@@ -191,7 +336,67 @@ app.post("/Addcar", function (req, res) {
     });
 });
 
+app.post("/Editcar", function (req, res) {
+    const { carID, name_car, price_car, capacity, TypecarID } = req.body;
+    const sql = "UPDATE car SET name_car =? , price_car =? , capacity =? , TypecarID =? WHERE carID=?";
+    con.query(sql, [name_car, price_car, capacity, TypecarID, carID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                console.log("Update ERROR");
+            } else {
+                // console.log(result);
+                res.send("done");
+            }
+        }
+    });
+
+});
+
 app.get("/DataHotel", function (req, res) {
+    const sql = "SELECT * FROM hotel";
+    con.query(sql, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post("/Addhotel", function (req, res) {
+    upload(req, res, function (err) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Upload error");
+        } else {
+            const filename = req.files;
+            let arrayhotel = "";
+            for (let i = 0; i < filename.length; i++) {
+                arrayhotel += filename[i].filename + ",";
+            }
+            console.log(arrayhotel);
+            // res.send("done");
+            const { Namehotel , Pricehotel } = req.body;
+            console.log(Namehotel+" "+Pricehotel+" "+filename);
+            const sql = "INSERT INTO hotel ( name_hotel , pic_hotel , price_per_day ) VALUES (?,?,?)";
+            con.query(sql, [Namehotel, arrayhotel , Pricehotel], function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send("Database error");
+                } else {
+                    if (result.affectedRows == 1) {
+                        res.send("upload done");
+                    } else {
+                        res.send("upload fail");
+                    }
+                }
+            });
+        }
+    });
 
 });
 

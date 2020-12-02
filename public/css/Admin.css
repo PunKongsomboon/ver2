@@ -62,3 +62,15 @@ body, html {
 #menushowplace {
     display: flex;
 }
+
+.gallery{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.galleryhotel{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
