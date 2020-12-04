@@ -6,6 +6,7 @@ const path = require("path");
 const upload = require("./uploadConfig.js");
 const { send } = require("process");
 const { CONNREFUSED } = require("dns");
+const { time } = require("console");
 
 const app = express();
 const con = mysql.createConnection(config);
@@ -263,7 +264,7 @@ app.post("/DataCar", function (req, res) {
             }
         });
     } else if (request_type == 1) {
-        const sql = "SELECT car.carID , car.name_car , car.price_car , car.capacity , car.TypecarID , typecar.TypecarID , typecar.nameType_car FROM car , typecar WHERE car.TypecarID = typecar.TypecarID AND car.TypecarID =1";
+        const sql = "SELECT car.carID , car.name_car , car.capacity , car.TypecarID , typecar.TypecarID , typecar.nameType_car FROM car , typecar WHERE car.TypecarID = typecar.TypecarID AND car.TypecarID =1";
         con.query(sql, function (err, result) {
             if (err) {
                 console.log(err);
@@ -273,7 +274,7 @@ app.post("/DataCar", function (req, res) {
             }
         });
     } else if (request_type == 2) {
-        const sql = "SELECT car.carID , car.name_car , car.price_car , car.capacity , car.TypecarID , typecar.TypecarID , typecar.nameType_car FROM car , typecar WHERE car.TypecarID = typecar.TypecarID AND car.TypecarID =2";
+        const sql = "SELECT car.carID , car.name_car , car.capacity , car.TypecarID , typecar.TypecarID , typecar.nameType_car FROM car , typecar WHERE car.TypecarID = typecar.TypecarID AND car.TypecarID =2";
         con.query(sql, function (err, result) {
             if (err) {
                 console.log(err);
@@ -320,9 +321,9 @@ app.get("/typecar", function (req, res) {
 });
 
 app.post("/Addcar", function (req, res) {
-    const { name_car, price_car, capacity, TypecarID } = req.body;
-    const sql = "INSERT INTO car (name_car , price_car , capacity , TypecarID) VALUES (?,?,?,?)";
-    con.query(sql, [name_car, price_car, capacity, TypecarID], function (err, result) {
+    const { name_car, capacity, TypecarID } = req.body;
+    const sql = "INSERT INTO car (name_car , capacity , TypecarID) VALUES (?,?,?)";
+    con.query(sql, [name_car, capacity, TypecarID], function (err, result) {
         if (err) {
             console.log(err);
             res.status(500).send("Database error");
@@ -337,9 +338,9 @@ app.post("/Addcar", function (req, res) {
 });
 
 app.post("/Editcar", function (req, res) {
-    const { carID, name_car, price_car, capacity, TypecarID } = req.body;
-    const sql = "UPDATE car SET name_car =? , price_car =? , capacity =? , TypecarID =? WHERE carID=?";
-    con.query(sql, [name_car, price_car, capacity, TypecarID, carID], function (err, result) {
+    const { carID, name_car, capacity, TypecarID } = req.body;
+    const sql = "UPDATE car SET name_car =? , capacity =? , TypecarID =? WHERE carID=?";
+    con.query(sql, [name_car, capacity, TypecarID, carID], function (err, result) {
         if (err) {
             console.log(err);
             res.status(500).send("Database error");
@@ -380,10 +381,10 @@ app.post("/Addhotel", function (req, res) {
             }
             console.log(arrayhotel);
             // res.send("done");
-            const { Namehotel , Pricehotel } = req.body;
-            console.log(Namehotel+" "+Pricehotel+" "+filename);
+            const { Namehotel, Pricehotel } = req.body;
+            console.log(Namehotel + " " + Pricehotel + " " + filename);
             const sql = "INSERT INTO hotel ( name_hotel , pic_hotel , price_per_day ) VALUES (?,?,?)";
-            con.query(sql, [Namehotel, arrayhotel , Pricehotel], function (err, result) {
+            con.query(sql, [Namehotel, arrayhotel, Pricehotel], function (err, result) {
                 if (err) {
                     console.log(err);
                     res.status(500).send("Database error");
@@ -400,8 +401,115 @@ app.post("/Addhotel", function (req, res) {
 
 });
 
-app.get("/Routes", function (req, res) {
+app.post("/Edithotel", function (req, res) {
+    const { hotelID, name_hotel, price_per_day } = req.body;
+    // console.log(hotelID + " " + name_hotel + " " + price_per_day);
+    // res.send("done");
+    const sql = "UPDATE hotel SET name_hotel =? , price_per_day =? WHERE hotelID=?";
+    con.query(sql, [name_hotel, price_per_day, hotelID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                res.status(500).send("UPDATE error");
+            } else {
+                res.send("done");
+            }
+        }
+    });
+});
 
+app.post("/Deletehotel", function (req, res) {
+    const { hotelID } = req.body;
+    console.log(hotelID);
+    // res.send("done");
+    const sql = "DELETE FROM hotel WHERE hotelID=?";
+    con.query(sql, [hotelID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                res.status(500).send("DELETE error");
+            } else {
+                res.send("done");
+            }
+        }
+    })
+});
+
+
+
+app.get("/Routes", function (req, res) {
+    const sql = "SELECT * FROM route";
+    con.query(sql, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+
+});
+
+
+//dropdown add route
+app.post("/select_Route", function (req, res) {
+    const { selectRoute } = req.body;
+    console.log(selectRoute);
+
+    const sql = "SELECT placeID , name_place FROM place WHERE placeID NOT IN (?)";
+    con.query(sql, [selectRoute], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post("/AddRoute", function (req, res) {
+    const { Origin, Destination, carID, price_route, time_route } = req.body;
+    console.log(Origin + " " + Destination + " " + carID + " " + price_route + " " + time_route);
+    // res.send('done');
+
+    const sql = "INSERT INTO route ( Origin , Destination , carID , price_route , time_route ) VALUES (?,?,?,?,?)";
+    con.query(sql, [Origin, Destination, carID, price_route, time_route], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                console.log(err);
+                res.status(500).send("INSERT error");
+            } else {
+                res.send("done");
+            }
+        }
+    });
+
+});
+
+app.post("/DeleteRoute", function (req, res) {
+    const { Route_ID } = req.body;
+    const sql = "DELETE FROM route WHERE Route_ID=?";
+
+    con.query(sql, [Route_ID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                console.log(err);
+                res.status(500).send("DELETE error");
+            } else {
+                res.send("done");
+            }
+        }
+    });
 });
 
 const PORT = 3000;

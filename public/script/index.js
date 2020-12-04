@@ -72,6 +72,7 @@ $(document).ready(function () {
             localStorage.id = data[0].user_ID;
             // alert(data[0].user_Role);
             if (data[0].user_Role == 1) {
+                localStorage.id = 0;
                 window.location.replace("/Admin");
             } else {
                 $("#txtUserlogin").val("");

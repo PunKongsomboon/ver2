@@ -52,3 +52,21 @@ content-type: application/json
 GET http://localhost:3000/DataHotel
 content-type: application/json
 
+###
+POST http://localhost:3000/Edithotel
+content-type: application/json
+
+{
+    "hotelID": 2,
+    "name_hotel": "pun",
+    "price_per_day": 2000
+}
+
+###
+POST http://localhost:3000/select_Route
+content-type: application/json
+
+{
+    "selectRoute": 8
+}
+
