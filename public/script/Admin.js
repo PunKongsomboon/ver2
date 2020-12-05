@@ -117,6 +117,7 @@ $(document).ready(function () {
     // $('#myTable').empty();
 
     table = $('#myTable').DataTable({
+        responsive: true,
         ajax: {
             method: 'POST',
             url: "/DataCar",
@@ -152,6 +153,7 @@ $(document).ready(function () {
         table = $("#myTable").dataTable().fnDestroy();
         $('#myTable').empty();
         table = $('#myTable').DataTable({
+            responsive: true,
             ajax: {
                 method: 'POST',
                 url: "/DataCar",
@@ -230,6 +232,7 @@ $(document).ready(function () {
             data: { type: 1 }
         }).done(function (data, state, xhr) {
             table = $('#myTable').DataTable({
+                responsive: true,
                 data: data,
                 columns: [
                     { data: "carID", title: "รหัส" },
@@ -300,6 +303,7 @@ $(document).ready(function () {
             data: { type: 2 }
         }).done(function (data, state, xhr) {
             table = $('#myTable').DataTable({
+                responsive: true,
                 data: data,
                 columns: [
                     { data: "carID", title: "รหัส" },
@@ -367,6 +371,7 @@ $(document).ready(function () {
         table = $("#myTable").dataTable().fnDestroy();
         $('#myTable').empty();
         table = $('#myTable').DataTable({
+            responsive: true,
             ajax: {
                 method: 'POST',
                 url: "/DataPlace",
@@ -459,6 +464,7 @@ $(document).ready(function () {
             data: { type: 1 }
         }).done(function (data, state, xhr) {
             table = $('#myTable').DataTable({
+                responsive: true,
                 data: data,
                 columns: [
                     { data: "placeID", title: "รหัส" },
@@ -537,6 +543,7 @@ $(document).ready(function () {
             data: { type: 2 }
         }).done(function (data, state, xhr) {
             table = $('#myTable').DataTable({
+                responsive: true,
                 data: data,
                 columns: [
                     { data: "placeID", title: "รหัส" },
@@ -616,6 +623,7 @@ $(document).ready(function () {
             data: { type: 3 }
         }).done(function (data, state, xhr) {
             table = $('#myTable').DataTable({
+                responsive: true,
                 data: data,
                 columns: [
                     { data: "placeID", title: "รหัส" },
@@ -694,6 +702,7 @@ $(document).ready(function () {
             data: { type: 4 }
         }).done(function (data, state, xhr) {
             table = $('#myTable').DataTable({
+                responsive: true,
                 data: data,
                 columns: [
                     { data: "placeID", title: "รหัส" },
@@ -778,6 +787,7 @@ $(document).ready(function () {
         }).done(function (data, state, xhr) {
             console.log(data);
             table = $('#myTable').DataTable({
+                responsive: true,
                 data: data,
                 columns: [
                     { data: "Route_ID", title: "รหัส" },
@@ -867,6 +877,7 @@ $(document).ready(function () {
                 table = $("#myTable").dataTable().fnDestroy();
                 $('#myTable').empty();
                 table = $('#myTable').DataTable({
+                    responsive: true,
                     ajax: {
                         method: 'POST',
                         url: "/DataPlace",
@@ -953,6 +964,22 @@ $(document).ready(function () {
                 alert(xhr.responseText);
             }
         });
+        
+        $.ajax({
+            method: 'POST',
+            url: '/DataPlace',
+        }).done(function (data, state, xhr) {
+            let createOption = "";
+            for (let i = 0; i < data.length; i++) {
+                createOption += "<option value='" + data[i].placeID + "'>" + data[i].name_place + "</option>";
+            }
+            $("#Route_Origin").html(createOption);
+            $("#Route_Destination").html(createOption);
+            // $("#EditTypeplace").html(createOption);
+        }).fail(function (xhr, state) {
+            alert(xhr.responeText);
+        });
+
         $("#txtNameplace").val("");
         $("#txtInfoplace").val("");
         $("#txtInfoplace").val("");
@@ -980,6 +1007,7 @@ $(document).ready(function () {
                 table = $("#myTable").dataTable().fnDestroy();
                 $('#myTable').empty();
                 table = $('#myTable').DataTable({
+                    responsive: true,
                     ajax: {
                         method: 'POST',
                         url: "/DataCar",
@@ -1065,6 +1093,20 @@ $(document).ready(function () {
             });
         }
 
+        $.ajax({
+            method: 'POST',
+            url: '/DataCar',
+        }).done(function (data, state, xhr) {
+            let createOption = "";
+            for (let i = 0; i < data.length; i++) {
+                createOption += "<option value='" + data[i].carID + "'>" + ("ชื่อ " + data[i].name_car + " ความจุ " + data[i].capacity) + "</option>";
+            }
+            $("#Route_carid").html(createOption);
+            // $("#EditTypeplace").html(createOption);
+        }).fail(function (xhr, state) {
+            alert(xhr.responeText);
+        });
+
 
     });
 
@@ -1096,6 +1138,7 @@ $(document).ready(function () {
             table = $("#myTable").dataTable().fnDestroy();
             $('#myTable').empty();
             table = $('#myTable').DataTable({
+                responsive: true,
                 ajax: {
                     method: 'POST',
                     url: "/DataCar",
@@ -1175,6 +1218,7 @@ $(document).ready(function () {
             table = $("#myTable").dataTable().fnDestroy();
             $('#myTable').empty();
             table = $('#myTable').DataTable({
+                responsive: true,
                 ajax: {
                     method: 'POST',
                     url: "/DataPlace",
@@ -1274,6 +1318,7 @@ $(document).ready(function () {
             }).done(function (data, state, xhr) {
                 console.log(data);
                 table = $('#myTable').DataTable({
+                    responsive: true,
                     data: data,
                     columns: [
                         { data: "hotelID", title: "รหัส" },
@@ -1351,6 +1396,7 @@ $(document).ready(function () {
             }).done(function (data, state, xhr) {
                 console.log(data);
                 table = $('#myTable').DataTable({
+                    responsive: true,
                     data: data,
                     columns: [
                         { data: "Route_ID", title: "รหัส" },
@@ -1423,6 +1469,7 @@ $(document).ready(function () {
                 url: '/DataHotel'
             }).done(function (data, state, xhr) {
                 table = $('#myTable').DataTable({
+                    responsive: true,
                     data: data,
                     columns: [
                         { data: "hotelID", title: "รหัส" },
@@ -1550,6 +1597,7 @@ $(document).ready(function () {
                 table = $("#myTable").dataTable().fnDestroy();
                 $('#myTable').empty();
                 table = $('#myTable').DataTable({
+                    responsive: true,
                     ajax: {
                         method: 'POST',
                         url: "/DataCar",
@@ -1626,6 +1674,7 @@ $(document).ready(function () {
                     data: { type: 1 }
                 }).done(function (data, state, xhr) {
                     table = $('#myTable').DataTable({
+                        responsive: true,
                         data: data,
                         columns: [
                             { data: "carID", title: "รหัส" },
@@ -1693,6 +1742,7 @@ $(document).ready(function () {
                     data: { type: 2 }
                 }).done(function (data, state, xhr) {
                     table = $('#myTable').DataTable({
+                        responsive: true,
                         data: data,
                         columns: [
                             { data: "carID", title: "รหัส" },
@@ -1782,6 +1832,7 @@ $(document).ready(function () {
                 table = $("#myTable").dataTable().fnDestroy();
                 $('#myTable').empty();
                 table = $('#myTable').DataTable({
+                    responsive: true,
                     ajax: {
                         method: 'POST',
                         url: "/DataPlace",
@@ -1884,6 +1935,7 @@ $(document).ready(function () {
                     table = $("#myTable").dataTable().fnDestroy();
                     $('#myTable').empty();
                     table = $('#myTable').DataTable({
+                        responsive: true,
                         data: data,
                         columns: [
                             { data: "placeID", title: "รหัส" },
@@ -1971,6 +2023,7 @@ $(document).ready(function () {
                     table = $("#myTable").dataTable().fnDestroy();
                     $('#myTable').empty();
                     table = $('#myTable').DataTable({
+                        responsive: true,
                         data: data,
                         columns: [
                             { data: "placeID", title: "รหัส" },
@@ -2059,6 +2112,7 @@ $(document).ready(function () {
                     table = $("#myTable").dataTable().fnDestroy();
                     $('#myTable').empty();
                     table = $('#myTable').DataTable({
+                        responsive: true,
                         data: data,
                         columns: [
                             { data: "placeID", title: "รหัส" },
@@ -2146,6 +2200,7 @@ $(document).ready(function () {
                     table = $("#myTable").dataTable().fnDestroy();
                     $('#myTable').empty();
                     table = $('#myTable').DataTable({
+                        responsive: true,
                         data: data,
                         columns: [
                             { data: "placeID", title: "รหัส" },
@@ -2241,6 +2296,7 @@ $(document).ready(function () {
                     url: '/DataHotel'
                 }).done(function (data, state, xhr) {
                     table = $('#myTable').DataTable({
+                        responsive: true,
                         data: data,
                         columns: [
                             { data: "hotelID", title: "รหัส" },
@@ -2353,6 +2409,7 @@ $(document).ready(function () {
                         }).done(function (data, state, xhr) {
                             console.log(data);
                             table = $('#myTable').DataTable({
+                                responsive: true,
                                 data: data,
                                 columns: [
                                     { data: "Route_ID", title: "รหัส" },

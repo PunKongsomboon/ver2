@@ -40,10 +40,10 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow">
         <a class="navbar-brand" href="#"><img src="image/lg.png" width="115px" height="30px"></a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button> -->
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -65,7 +65,7 @@
             <option value="3">ข้อมูลที่พัก</option>
             <option value="4">ข้อมูลเส้นทาง</option>
         </select>
-        <div class="d-flex my-4">
+        <div class="col-12 my-4">
             <div id="menushowcar">
                 <a class='nav-link px-3' style='cursor: pointer;' id='menuallcar'>ทั้งหมด</a>
                 <a class='nav-link px-3' id='menubus'
@@ -84,12 +84,12 @@
                     id="menunat">ที่ท่องเที่ยวธรรมชาติ</a>
             </div>
             <div id="menushowHotel">
-                <a class='nav-link px-3'
+                <a class='nav-link px-3 col-1'
                     style='border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; cursor: pointer;'
                     id="menuallHotel">ทั้งหมด</a>
             </div>
             <div id="menushowRoute">
-                <a class='nav-link px-3'
+                <a class='nav-link px-3 col-1'
                     style='border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; cursor: pointer;'
                     id="menuallRoute">ทั้งหมด</a>
             </div>
@@ -191,7 +191,7 @@
                         <label for="" class="mt-2">เวลาปิดทำการ</label>
                         <input type="time" class="form-control text-center mt-2" id="selectTimeClose" name="timeclose"
                             required>
-                        <label for="" class="mt-2">วันเปิดทำการ</label>
+                        <label for="" class="mt-2">วันปิดทำการ</label>
                         <select class="form-control mb-3" name="Dayclose">
                             <option value="monday">Monday</option>
                             <option value="tuesday">Tuesday</option>
@@ -315,7 +315,7 @@
                         <input type="text" id="EdittxtIDhotel" class="form-control mb-2" placeholder="รหัส" disabled>
                         <input type="text" id="EdittxtNamehotel" class="form-control mb-2" placeholder="ชื่อที่พัก">
                         <input type="number" id="EdittxtPricehotel" class="form-control mt-2"
-                            placeholder="ราคาต่อคืนห้องปกติ" >
+                            placeholder="ราคาต่อคืนห้องปกติ">
                         <div class="modal-footer justify-content-center">
                             <button id="btnSaveEdithotel" class="btn btn-success">Save</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -344,17 +344,18 @@
                         <!-- <label class="form-control mb-3" id="txtDestination"></label> -->
                         <select id="Route_carid" class="form-control mb-3"></select>
                         <input type="number" class="form-control mb-3" id="price_route" placeholder="ราคาในการเดินทาง">
-                        <input type="time" class="form-control mb-3" id="time_route" placeholder="ใช้เวลาในการเดินทาง">
+                        <input type="text" class="form-control mb-3" id="time_route" placeholder="ใช้เวลาในการเดินทาง เช่น 7:32">
                         <div class="modal-footer justify-content-center">
                             <button id="btnSaveAddRoute" class="btn btn-success">Save</button>
-                            <button type="button" id="btnCloseAddRoute" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" id="btnCloseAddRoute" class="btn btn-secondary"
+                                data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <footer class="bg-dark text-white">
         <div class="container-fluid padding">
             <div class="row">
