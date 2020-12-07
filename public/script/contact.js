@@ -1,5 +1,8 @@
 //navbar
 $(document).ready(function () {
+    if (localStorage.role == 1) {
+        window.location.replace("/Admin");
+    }
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll > 100) {
@@ -13,7 +16,7 @@ $(document).ready(function () {
     })
 })
 
-$("#openProfile").click(function(){
+$("#openProfile").click(function () {
     alert("test");
     $('body').toggleClass("openProfile");
     $('#exampleModalCenter').modal('show')

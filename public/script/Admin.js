@@ -1,11 +1,16 @@
 $(document).ready(function () {
-    if(localStorage.id == 0 || localStorage == undefined){
+    console.log(localStorage.id)
+    if (localStorage.id == 0 || localStorage == undefined) {
         window.location.replace("/");
     }
     var rowID;
     var table;
     var checkEditmodecar = 0;
     var checkEditmodeplace = 0;
+    var numberAddplaceinR = "";
+    var numberEditplaceinR = "";
+    $("#showplace").text(numberAddplaceinR);
+    $("#showplace").text(numberEditplaceinR);
     $.ajax({
         method: 'GET',
         url: '/typecar',
@@ -58,9 +63,35 @@ $(document).ready(function () {
         }
         $("#Route_Origin").html(createOption);
         $("#Route_Destination").html(createOption);
+        $("#Route_place").html(createOption);
+        $("#EditRoute_place").html(createOption);
         // $("#EditTypeplace").html(createOption);
     }).fail(function (xhr, state) {
         alert(xhr.responeText);
+    });
+
+
+
+    $("#addplaceRoute").click(function () {
+        let valplace = $("#Route_place").children(":selected").attr("value");
+        numberAddplaceinR += valplace + ",";
+        $("#showplace").text(numberAddplaceinR);
+    });
+
+    $("#EditaddplaceRoute").click(function () {
+        let valplace = $("#EditRoute_place").children(":selected").attr("value");
+        numberEditplaceinR += valplace + ",";
+        $("#Editshowplace").text(numberEditplaceinR);
+    });
+
+    $("#clear_placeRoute").click(function () {
+        numberAddplaceinR = "";
+        $("#showplace").text(numberAddplaceinR);
+    });
+
+    $("#Editclear_placeRoute").click(function () {
+        numberEditplaceinR = "";
+        $("#Editshowplace").text(numberEditplaceinR);
     });
 
     $("#Route_Origin").change(function () {
@@ -796,12 +827,57 @@ $(document).ready(function () {
                     { data: "Route_ID", title: "รหัส" },
                     { data: "Origin", title: "ต้นทาง" },
                     { data: "Destination", title: "ปลายทาง" },
-                    { data: "carID", title: "ประเภทรถ" },
+                    { data: "name_car", title: "ประเภทรถ" },
                     { data: "price_route", title: "ราคาต่อการเดินทาง" },
                     { data: "time_route", title: "เวลาที่ใช้ในการเดินทาง" },
-                    { title: "Action", defaultContent: "<button class='btn btn-danger mr-2 btnDeleteRoute'>Delete</button>" }
+                    { data: "place_in_route", title: "สถานที่ระหว่างทาง" },
+                    { title: "Action", defaultContent: "<button class='btn btn-danger mr-2 btnDeleteRoute'>Delete</button><button class='btn btn-warning btnEditroute mr-2'>Edit</button>" }
                 ]
 
+            });
+
+            $("#myTable tbody").on("click", ".btnEditroute", function () {
+                const currentRow = $(this).parents("tr");
+                const tableallroute = table.row(currentRow).data();
+                rowID = table.row(currentRow).index();
+                console.log(tableallroute.Route_ID + " " + rowID);
+                console.log(tableallroute);
+                $.ajax({
+                    method: 'POST',
+                    url: '/DataCar',
+                }).done(function (data, state, xhr) {
+                    let createOption = "";
+                    for (let i = 0; i < data.length; i++) {
+                        createOption += "<option value='" + data[i].carID + "'>" + ("ชื่อ " + data[i].name_car + " ความจุ " + data[i].capacity) + "</option>";
+                    }
+                    $("#EditRoute_carid").html(createOption);
+                    $("#EditRoute_carid").val(tableallroute.carID);
+                    // $("#EditTypeplace").html(createOption);
+                }).fail(function (xhr, state) {
+                    alert(xhr.responeText);
+                });
+
+                $.ajax({
+                    method: 'POST',
+                    url: '/DataPlace',
+                }).done(function (data, state, xhr) {
+                    let createOption = "";
+                    for (let i = 0; i < data.length; i++) {
+                        createOption += "<option value='" + data[i].placeID + "'>" + data[i].name_place + "</option>";
+                    }
+                    $("#EditRoute_Origin").html(createOption);
+                    $("#EditRoute_Destination").html(createOption);
+                    $("#EditRoute_Origin").val(tableallroute.IDorigin);
+                    $("#EditRoute_Destination").val(tableallroute.IDdestination);
+                    // $("#EditTypeplace").html(createOption);
+                }).fail(function (xhr, state) {
+                    alert(xhr.responeText);
+                });
+                $("#EditRouteID").val(tableallroute.Route_ID);
+                $("#Editprice_route").val(tableallroute.price_route);
+                $("#Edittime_route").val(tableallroute.time_route);
+                $("#Editshowplace").text(numberEditplaceinR);
+                $("#modelEditRoute").modal("show");
             });
 
             $("#myTable tbody").on("click", ".btnDeleteRoute", function () {
@@ -841,6 +917,8 @@ $(document).ready(function () {
         }).fail(function (xhr, state) {
             alert(xhr.responeText);
         })
+        numberAddplaceinR = "";
+        $("#showplace").text(numberAddplaceinR);
     });
 
     // modal add data
@@ -967,7 +1045,7 @@ $(document).ready(function () {
                 alert(xhr.responseText);
             }
         });
-        
+
         $.ajax({
             method: 'POST',
             url: '/DataPlace',
@@ -1405,12 +1483,57 @@ $(document).ready(function () {
                         { data: "Route_ID", title: "รหัส" },
                         { data: "Origin", title: "ต้นทาง" },
                         { data: "Destination", title: "ปลายทาง" },
-                        { data: "carID", title: "ประเภทรถ" },
+                        { data: "name_car", title: "ประเภทรถ" },
                         { data: "price_route", title: "ราคาต่อการเดินทาง" },
                         { data: "time_route", title: "เวลาที่ใช้ในการเดินทาง" },
-                        { title: "Action", defaultContent: "<button class='btn btn-danger mr-2 btnDeleteRoute'>Delete</button>" }
+                        { data: "place_in_route", title: "สถานที่ระหว่างทาง" },
+                        { title: "Action", defaultContent: "<button class='btn btn-danger mr-2 btnDeleteRoute'>Delete</button><button class='btn btn-warning btnEditroute mr-2'>Edit</button>" }
                     ]
 
+                });
+
+                $("#myTable tbody").on("click", ".btnEditroute", function () {
+                    const currentRow = $(this).parents("tr");
+                    const tableallroute = table.row(currentRow).data();
+                    rowID = table.row(currentRow).index();
+                    console.log(tableallroute.Route_ID + " " + rowID);
+                    console.log(tableallroute);
+                    $.ajax({
+                        method: 'POST',
+                        url: '/DataCar',
+                    }).done(function (data, state, xhr) {
+                        let createOption = "";
+                        for (let i = 0; i < data.length; i++) {
+                            createOption += "<option value='" + data[i].carID + "'>" + ("ชื่อ " + data[i].name_car + " ความจุ " + data[i].capacity) + "</option>";
+                        }
+                        $("#EditRoute_carid").html(createOption);
+                        $("#EditRoute_carid").val(tableallroute.carID);
+                        // $("#EditTypeplace").html(createOption);
+                    }).fail(function (xhr, state) {
+                        alert(xhr.responeText);
+                    });
+
+                    $.ajax({
+                        method: 'POST',
+                        url: '/DataPlace',
+                    }).done(function (data, state, xhr) {
+                        let createOption = "";
+                        for (let i = 0; i < data.length; i++) {
+                            createOption += "<option value='" + data[i].placeID + "'>" + data[i].name_place + "</option>";
+                        }
+                        $("#EditRoute_Origin").html(createOption);
+                        $("#EditRoute_Destination").html(createOption);
+                        $("#EditRoute_Origin").val(tableallroute.IDorigin);
+                        $("#EditRoute_Destination").val(tableallroute.IDdestination);
+                        // $("#EditTypeplace").html(createOption);
+                    }).fail(function (xhr, state) {
+                        alert(xhr.responeText);
+                    });
+                    $("#EditRouteID").val(tableallroute.Route_ID);
+                    $("#Editprice_route").val(tableallroute.price_route);
+                    $("#Edittime_route").val(tableallroute.time_route);
+                    $("#Editshowplace").text(numberEditplaceinR);
+                    $("#modelEditRoute").modal("show");
                 });
 
                 $("#myTable tbody").on("click", ".btnDeleteRoute", function () {
@@ -1450,6 +1573,8 @@ $(document).ready(function () {
             }).fail(function (xhr, state) {
                 alert(xhr.responeText);
             })
+            numberAddplaceinR = "";
+            $("#showplace").text(numberAddplaceinR);
         }
     });
 
@@ -2394,7 +2519,7 @@ $(document).ready(function () {
                     $.ajax({
                         method: 'POST',
                         url: '/AddRoute',
-                        data: { Origin: origin, Destination: destination, carID: route_carid, price_route: price_route, time_route: time_route }
+                        data: { Origin: origin, Destination: destination, carID: route_carid, price_route: price_route, time_route: time_route, place_in_route: numberAddplaceinR }
                     }).done(function (data, state, xhr) {
                         // alert(data);
                         checkEditmodecar = 0;
@@ -2418,12 +2543,57 @@ $(document).ready(function () {
                                     { data: "Route_ID", title: "รหัส" },
                                     { data: "Origin", title: "ต้นทาง" },
                                     { data: "Destination", title: "ปลายทาง" },
-                                    { data: "carID", title: "ประเภทรถ" },
+                                    { data: "name_car", title: "ประเภทรถ" },
                                     { data: "price_route", title: "ราคาต่อการเดินทาง" },
                                     { data: "time_route", title: "เวลาที่ใช้ในการเดินทาง" },
-                                    { title: "Action", defaultContent: "<button class='btn btn-danger mr-2 btnDeleteRoute'>Delete</button>" }
+                                    { data: "place_in_route", title: "สถานที่ระหว่างทาง" },
+                                    { title: "Action", defaultContent: "<button class='btn btn-danger mr-2 btnDeleteRoute'>Delete</button><button class='btn btn-warning btnEditroute mr-2'>Edit</button>" }
                                 ]
 
+                            });
+
+                            $("#myTable tbody").on("click", ".btnEditroute", function () {
+                                const currentRow = $(this).parents("tr");
+                                const tableallroute = table.row(currentRow).data();
+                                rowID = table.row(currentRow).index();
+                                console.log(tableallroute.Route_ID + " " + rowID);
+                                console.log(tableallroute);
+                                $.ajax({
+                                    method: 'POST',
+                                    url: '/DataCar',
+                                }).done(function (data, state, xhr) {
+                                    let createOption = "";
+                                    for (let i = 0; i < data.length; i++) {
+                                        createOption += "<option value='" + data[i].carID + "'>" + ("ชื่อ " + data[i].name_car + " ความจุ " + data[i].capacity) + "</option>";
+                                    }
+                                    $("#EditRoute_carid").html(createOption);
+                                    $("#EditRoute_carid").val(tableallroute.carID);
+                                    // $("#EditTypeplace").html(createOption);
+                                }).fail(function (xhr, state) {
+                                    alert(xhr.responeText);
+                                });
+
+                                $.ajax({
+                                    method: 'POST',
+                                    url: '/DataPlace',
+                                }).done(function (data, state, xhr) {
+                                    let createOption = "";
+                                    for (let i = 0; i < data.length; i++) {
+                                        createOption += "<option value='" + data[i].placeID + "'>" + data[i].name_place + "</option>";
+                                    }
+                                    $("#EditRoute_Origin").html(createOption);
+                                    $("#EditRoute_Destination").html(createOption);
+                                    $("#EditRoute_Origin").val(tableallroute.IDorigin);
+                                    $("#EditRoute_Destination").val(tableallroute.IDdestination);
+                                    // $("#EditTypeplace").html(createOption);
+                                }).fail(function (xhr, state) {
+                                    alert(xhr.responeText);
+                                });
+                                $("#EditRouteID").val(tableallroute.Route_ID);
+                                $("#Editprice_route").val(tableallroute.price_route);
+                                $("#Edittime_route").val(tableallroute.time_route);
+                                $("#Editshowplace").text(numberEditplaceinR);
+                                $("#modelEditRoute").modal("show");
                             });
 
                             $("#myTable tbody").on("click", ".btnDeleteRoute", function () {
@@ -2463,6 +2633,8 @@ $(document).ready(function () {
                         }).fail(function (xhr, state) {
                             alert(xhr.responeText);
                         })
+                        numberAddplaceinR = "";
+                        $("#showplace").text(numberAddplaceinR);
                         $("#price_route").val("");
                         $("#time_route").val("");
                         $("#modelAddRoute").modal("hide");
@@ -2475,9 +2647,136 @@ $(document).ready(function () {
 
     });
 
+    $("#btnSaveEditRoute").click(function () {
+        // alert("test");
+        let route_id = $("#EditRouteID").val();
+        let origin = $("#EditRoute_Origin").val();
+        let destination = $("#EditRoute_Destination").val();
+        let route_carid = $("#EditRoute_carid").val();
+        let price_route = $("#Editprice_route").val();
+        let time_route = $("#Edittime_route").val();
+        // alert(route_id+" "+origin+" "+destination+" "+route_carid+" "+price_route+" "+time_route+" "+numberplaceinR);
+        $.ajax({
+            method: 'POST',
+            url: '/EditRoute',
+            data: { Route_ID: route_id, Origin: origin, Destination: destination, carID: route_carid, price_route: price_route, time_route: time_route, place_in_route: numberEditplaceinR }
+        }).done(function (data, state, xhr) {
+            table.clear();
+            table = $("#myTable").dataTable().fnDestroy();
+            $('#myTable').empty();
+            $.ajax({
+                method: 'GET',
+                url: '/Routes'
+            }).done(function (data, state, xhr) {
+                console.log(data);
+                table = $('#myTable').DataTable({
+                    responsive: true,
+                    data: data,
+                    columns: [
+                        { data: "Route_ID", title: "รหัส" },
+                        { data: "Origin", title: "ต้นทาง" },
+                        { data: "Destination", title: "ปลายทาง" },
+                        { data: "name_car", title: "ประเภทรถ" },
+                        { data: "price_route", title: "ราคาต่อการเดินทาง" },
+                        { data: "time_route", title: "เวลาที่ใช้ในการเดินทาง" },
+                        { data: "place_in_route", title: "สถานที่ระหว่างทาง" },
+                        { title: "Action", defaultContent: "<button class='btn btn-danger mr-2 btnDeleteRoute'>Delete</button><button class='btn btn-warning btnEditroute mr-2'>Edit</button>" }
+                    ]
+
+                });
+
+                $("#myTable tbody").on("click", ".btnEditroute", function () {
+                    const currentRow = $(this).parents("tr");
+                    const tableallroute = table.row(currentRow).data();
+                    rowID = table.row(currentRow).index();
+                    console.log(tableallroute.Route_ID + " " + rowID);
+                    console.log(tableallroute);
+                    $.ajax({
+                        method: 'POST',
+                        url: '/DataCar',
+                    }).done(function (data, state, xhr) {
+                        let createOption = "";
+                        for (let i = 0; i < data.length; i++) {
+                            createOption += "<option value='" + data[i].carID + "'>" + ("ชื่อ " + data[i].name_car + " ความจุ " + data[i].capacity) + "</option>";
+                        }
+                        $("#EditRoute_carid").html(createOption);
+                        $("#EditRoute_carid").val(tableallroute.carID);
+                        // $("#EditTypeplace").html(createOption);
+                    }).fail(function (xhr, state) {
+                        alert(xhr.responeText);
+                    });
+
+                    $.ajax({
+                        method: 'POST',
+                        url: '/DataPlace',
+                    }).done(function (data, state, xhr) {
+                        let createOption = "";
+                        for (let i = 0; i < data.length; i++) {
+                            createOption += "<option value='" + data[i].placeID + "'>" + data[i].name_place + "</option>";
+                        }
+                        $("#EditRoute_Origin").html(createOption);
+                        $("#EditRoute_Destination").html(createOption);
+                        $("#EditRoute_Origin").val(tableallroute.IDorigin);
+                        $("#EditRoute_Destination").val(tableallroute.IDdestination);
+                        // $("#EditTypeplace").html(createOption);
+                    }).fail(function (xhr, state) {
+                        alert(xhr.responeText);
+                    });
+                    $("#EditRouteID").val(tableallroute.Route_ID);
+                    $("#Editprice_route").val(tableallroute.price_route);
+                    $("#Edittime_route").val(tableallroute.time_route);
+                    $("#Editshowplace").text(numberEditplaceinR);
+                    $("#modelEditRoute").modal("show");
+                });
+
+                $("#myTable tbody").on("click", ".btnDeleteRoute", function () {
+                    const currentRow = $(this).parents("tr");
+                    let checktableRoute = table.row(currentRow).data();
+                    rowID = table.row(currentRow).index();
+                    Swal.fire({
+                        title: "Warning",
+                        text: "Are you sure to delete ID " + checktableRoute.Route_ID,
+                        icon: "warning",
+                        showCancelButton: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                method: 'POST',
+                                url: '/DeleteRoute',
+                                data: { Route_ID: checktableRoute.Route_ID }
+                            }).done(function (data, state, xhr) {
+                                table.row(rowID).remove().draw();
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "The record has been deleted.",
+                                    icon: "success"
+                                })
+                            }).fail(function (xhr, state) {
+                                Swal.fire({
+                                    title: "Delete error!",
+                                    text: "It's has something wrong.",
+                                    icon: "error"
+                                })
+                            })
+
+                        }
+                    });
+                });
+
+                $("#modelEditRoute").modal("hide");
+
+            }).fail(function (xhr, state) {
+                alert(xhr.responeText);
+            })
+        }).fail(function (xhr, state, err) {
+            alert(err);
+        });
+    });
+
     // navbar menu sign out
     $("#Adminlogout").click(function () {
         localStorage.id = 0;
+        localStorage.role = 0;
         window.location.replace("/");
     });
 

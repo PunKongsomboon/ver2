@@ -2,10 +2,10 @@ POST http://localhost:3000/SignUp
 content-type: application/json
 
 {
-    "username": "test",
-    "password": "1234",
-    "email": "test",
-    "role": "2"
+    "username": "Aumaim",
+    "password": "311243",
+    "email": "",
+    "role": "1"
 }
 
 ###
@@ -63,7 +63,9 @@ content-type: application/json
 }
 
 ###
-GET http://localhost:3000/GetRoute
+POST http://localhost:3000/Addplan
 content-type: application/json
 
-
+{
+    "someplace": 35
+}

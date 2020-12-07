@@ -33,9 +33,13 @@ $(document).ready(function () {
     if (localStorage.id == undefined || localStorage.id == 0) {
 
     } else {
-        $("body").toggleClass("signupsuccess");
-        $("body").toggleClass("openlogout");
-        $("body").toggleClass("closelogin");
+        if (localStorage.role == 1) {
+            window.location.replace("/Admin");
+        } else {
+            $("body").toggleClass("signupsuccess");
+            $("body").toggleClass("openlogout");
+            $("body").toggleClass("closelogin");
+        }
     }
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
@@ -89,7 +93,8 @@ $(document).ready(function () {
             localStorage.id = data[0].user_ID;
             // alert(data[0].user_Role);
             if (data[0].user_Role == 1) {
-                localStorage.id = 0;
+                localStorage.id = data[0].user_ID;
+                localStorage.role = data[0].user_Role;
                 window.location.replace("/Admin");
             } else {
                 $("#txtUserlogin").val("");
@@ -186,6 +191,7 @@ $(document).ready(function () {
             if (selectOrigin == selectDestination) {
                 alert("Please do not select Origin and destination in the same value!");
             } else {
+                // alert(localStorage.id);
                 window.location.href = "/Filter";
             }
             // $("#pin").attr("href", "/Filter");
@@ -247,6 +253,60 @@ $(document).ready(function () {
             })
         }
     });
+
+    $.ajax({
+        method: 'POST',
+        url: '/Dataplan'
+    }).done(function (data, state, xhr) {
+        // console.log(data);
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].status_share == 0) {
+
+            } else if (data[i].status_share == 1) {
+                var picplaceInR = data[i].route;
+                // console.log(picplaceInR);
+                let create = "";
+                var picInR = picplaceInR.split(',');
+                for (let r = 0; r < picInR.length; r++) {
+                    if (picInR[r] == "") {
+                        // console.log(r);
+                        // alert("test");
+                        picInR.splice(r, 1);
+                    }
+                }
+                console.log(picInR);
+                let randompic = Math.floor(Math.random() * picInR.length);
+                console.log(randompic);
+                $.ajax({
+                    method: 'POST',
+                    url: '/someplace',
+                    data: { idplace: picInR[randompic] }
+                }).done(function (data, state, xhr) {
+                    // console.log(data);
+                    let picplaceInR = data[0].pic_place;
+                    // console.log(picplaceInR);
+                    let picInR = picplaceInR.split(',');
+                    for (let r = 0; r < picInR.length; r++) {
+                        if (picInR[r] == "") {
+                            // console.log(r);
+                            // alert("test");
+                            picInR.splice(r, 1);
+                        }
+                    }
+                    // console.log(picInR);
+                    let randompic = Math.floor(Math.random() * picInR.length);
+                    // console.log(data[0].planID);
+                    create += "<div class='col-11 my-3'><div class='col-12 mx-auto p-0 shadow rounded'><div class='row no-gutters'><div class='col-sm-5 col-xs-12'><img src='upload/"+ picInR[randompic] +"' class='card-img-top'></div><div class='col-sm-7'><div class='col-sm-12 text-center mt-5'><button class='btn btn-outline-secondary my-3'>ดูรายละเอียด</button><button class='btn btn-outline-success my-3'>เลือก</button></div></div></div></div></div>";
+                    $("#area-share").html(create);
+
+                }).fail(function (xhr, state, err) {
+                    alert(err);
+                })
+            }
+        }
+    }).fail(function (xhr, state, err) {
+        alert(err);
+    })
 
     $(function () {
         $(".btn").click(function () {

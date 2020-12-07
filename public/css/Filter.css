@@ -101,3 +101,27 @@ section .filter {
 table.table-condensed {
     margin: 0px;
 }
+
+
+/* เลือกช่วงอายุ */
+.personselect #RangeAge{
+    display:  none;
+}
+
+.GFselect #numberPerson{
+    display: none;
+}
+
+#area-card-place {
+    display: none;
+}
+
+.notifi #area-card-place {
+    display: inline;
+}
+
+.testimonial-group>.row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}

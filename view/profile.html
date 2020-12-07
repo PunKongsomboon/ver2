@@ -55,7 +55,7 @@
                         </svg></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="logout">Sign Out</a>
+                    <a class="nav-link" id="logout" style="cursor: pointer;">Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -66,23 +66,23 @@
             <div class="profile-area col-xl-4 col-lg-4 col-sm-12 text-center">
                 <div class="showProfileinfo col-12 my-5 py-5">
                     <img src="image/man.png" width="150px" height="150px">
-                    <h5 class="my-5">Username : test1</h5>
-                    <h5 class="my-5">E-mail : test1234@email.com</h5>
+                    <h5 class="my-5" id="txtusername">Username : </h5>
+                    <h5 class="my-5" id="txtemail">E-mail : </h5>
                     <h5 class="text-danger mx-auto col-6" id="btnChange-password">Change password</h5>
                 </div>
             </div>
             <div class="showActivity-area col-xl-8 col-lg-8 col-sm-12">
+                <h4 class="text-success col-10 mx-auto">Active</h4>
                 <div class="Acitve-now">
-                    <h4 class="text-success col-10 mx-auto">Active</h4>
                     <!-- <div class="card col-12 mx-auto p-0 shadow rounded">
                         <div class="row no-gutters">
                             <div class="col-sm-5 col-xs-12">
                                 <img src="../public/image/25.jpg" alt="" class="card-img-top">
                             </div>
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="card-body">
-                                    <h5 class="card-title">เวลา 3 วัน 2 คืน</h5>
-                                    <p class="card-text">งบประมาณ 5,000 บาทท่องเที่ยว 8 สถานที่</p>
+                            <div class='col-sm-4 col-xs-12'>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>เวลา 3 วัน 2 คืน</h5>
+                                    <p class='card-text'>งบประมาณ 5,000 บาทท่องเที่ยว 8 สถานที่</p>
                                 </div>
                             </div>
                             <div class="col-sm-3 col-xs-12 text-center my-auto">
@@ -94,8 +94,9 @@
                     </div> -->
                     
                 </div>
-                <div class="history-activity">
-                    <h4 class="text-danger col-10 mx-auto">History</h4>
+                <h4 class="text-danger col-10 mx-auto">History</h4>
+                <div class="history-activity mt-4">
+                    
                     <!-- <div class="card col-12 mx-auto p-0 shadow rounded my-3">
                         <div class="row no-gutters">
                             <div class="col-sm-5 col-xs-12">
@@ -247,12 +248,12 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <input type="password" placeholder="รหัสใหม่" class="form-control my-3">
-                    <input type="password" placeholder="ยืนยันรหัสใหม่" class="form-control my-3">
+                    <input type="text" placeholder="รหัสใหม่" id="newpassword" class="form-control my-3">
+                    <input type="password" placeholder="ยืนยันรหัสใหม่" id="comfirmpass" class="form-control my-3">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success">Save</button>
+                    <button type="button" id="btnEditpass" class="btn btn-success">Save</button>
                 </div>
             </div>
         </div>

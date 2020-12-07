@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+  if (localStorage.id == 0 || localStorage.id == undefined) {
+    window.location.replace("/");
+  }
+  if (localStorage.role == 1) {
+    window.location.replace("/Admin");
+  }
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
     if (scroll > 100) {
@@ -11,28 +17,6 @@ $(document).ready(function () {
 
     }
   })
-
-
-  $(".btnHotel").click(function () {
-    $("#modalHotel").modal("show");
-  });
-
-  $("#imgHotel1").click(function () {
-    $("#txtShowHotel").text("โรงแรม วนาศรม");
-    $("#PicHotel").prop("src", "https://www.mfu.ac.th/fileadmin/media/life-on-campus/mfu-wanasom-01.jpg");
-  });
-  $("#imgHotel2").click(function () {
-    $("#txtShowHotel").text("โรงแรม วนาเวศน์");
-    $("#PicHotel").prop("src", "https://www.mfu.ac.th/fileadmin/_processed_/6/6/csm_Wanaves_1_1a7eec52f5.jpg");
-  });
-  $("#imgHotel3").click(function () {
-    $("#txtShowHotel").text("โรงแรม ดี-พลัส เพลส");
-    $("#PicHotel").prop("src", "https://f.hongpak.in.th/media/rooms/photos/18/1201/113313_1335.jpg");
-  });
-  $("#imgHotel4").click(function () {
-    $("#txtShowHotel").text("โรงแรม เลอ พัทธา");
-    $("#PicHotel").prop("src", "https://cf.bstatic.com/images/hotel/max1024x768/484/48419878.jpg");
-  });
 
   $("#btnCreateplan").click(function () {
     Swal.fire({
@@ -48,15 +32,38 @@ $(document).ready(function () {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            window.location.replace("/profile");
+            // alert(localStorage.saveRoute)
+            // alert(localStorage.idhotel)
+            // alert(localStorage.id);
+            // alert(localStorage.Origin);
+            // alert(localStorage.Destination);
+            let route = localStorage.Origin + "," + localStorage.saveRoute + "," + localStorage.Destination;
+            // alert(route);
+            $.ajax({
+              method: 'POST',
+              url: '/Addplan',
+              data: { hotelID: localStorage.idhotel, user_ID: localStorage.id, route: route }
+            }).done(function (data, state, xhr) {
+              window.location.replace("/profile");
+            }).fail(function (xhr, state, err) {
+              alert(err);
+            })
+
           }
         });
       }
     })
   });
 
+
+
   $("#btnBacktoViewplan").click(function () {
     window.location.replace("/Filter");
+  });
+
+  $("#logout").click(function () {
+    localStorage.id = 0;
+    window.location.replace("/");
   });
 
 

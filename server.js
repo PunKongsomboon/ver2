@@ -7,6 +7,7 @@ const upload = require("./uploadConfig.js");
 const { send } = require("process");
 const { CONNREFUSED } = require("dns");
 const { time } = require("console");
+const { serialize } = require("v8");
 
 const app = express();
 const con = mysql.createConnection(config);
@@ -95,10 +96,6 @@ app.get("/Contact", function (req, res) {
     res.sendFile(path.join(__dirname, "/view/contact.html"));
 });
 
-app.get("/DataPlan", function (req, res) {
-
-});
-
 app.get("/Admin", function (req, res) {
     res.sendFile(path.join(__dirname, "/view/Admin.html"))
 });
@@ -165,6 +162,19 @@ app.post("/DataPlace", function (req, res) {
             }
         });
     }
+});
+
+app.post("/someplace", function (req, res) {
+    const { idplace } = req.body;
+    const sql = "SELECT * FROM place WHERE placeID=?";
+    con.query(sql, [idplace], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
 });
 
 app.get("/typeplace", function (req, res) {
@@ -442,7 +452,7 @@ app.post("/Deletehotel", function (req, res) {
 
 
 app.get("/Routes", function (req, res) {
-    const sql = "SELECT * FROM route";
+    const sql = "SELECT ro.Route_ID, ro.Origin 'IDorigin',o.name_place 'Origin', ro.Destination 'IDdestination', d.name_place 'Destination', ro.carID ,c.name_car,ro.price_route,ro.time_route,ro.place_in_route FROM place o  JOIN route ro ON o.placeID = ro.Origin JOIN place d ON d.placeID  = ro.Destination JOIN car c ON c.carID = ro.carID GROUP BY ro.Route_ID, o.name_place ,d.name_place";
     con.query(sql, function (err, result) {
         if (err) {
             console.log(err);
@@ -453,6 +463,7 @@ app.get("/Routes", function (req, res) {
     });
 
 });
+
 
 
 //dropdown add route
@@ -472,12 +483,12 @@ app.post("/select_Route", function (req, res) {
 });
 
 app.post("/AddRoute", function (req, res) {
-    const { Origin, Destination, carID, price_route, time_route } = req.body;
-    console.log(Origin + " " + Destination + " " + carID + " " + price_route + " " + time_route);
+    const { Origin, Destination, carID, price_route, time_route, place_in_route } = req.body;
+    console.log(Origin + " " + Destination + " " + carID + " " + price_route + " " + time_route + " " + place_in_route);
     // res.send('done');
 
-    const sql = "INSERT INTO route ( Origin , Destination , carID , price_route , time_route ) VALUES (?,?,?,?,?)";
-    con.query(sql, [Origin, Destination, carID, price_route, time_route], function (err, result) {
+    const sql = "INSERT INTO route ( Origin , Destination , carID , price_route , time_route , place_in_route ) VALUES (?,?,?,?,?,?)";
+    con.query(sql, [Origin, Destination, carID, price_route, time_route, place_in_route], function (err, result) {
         if (err) {
             console.log(err);
             res.status(500).send("Database error");
@@ -510,6 +521,204 @@ app.post("/DeleteRoute", function (req, res) {
             }
         }
     });
+});
+
+app.post("/EditRoute", function (req, res) {
+    const { Route_ID, Origin, Destination, carID, price_route, time_route, place_in_route } = req.body;
+    // console.log(hotelID + " " + name_hotel + " " + price_per_day);
+    // res.send("done");
+    const sql = "UPDATE route SET Origin=? , Destination =? , carID=? , price_route=? , time_route=? , place_in_route=? WHERE Route_ID=?";
+    con.query(sql, [Origin, Destination, carID, price_route, time_route, place_in_route, Route_ID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                res.status(500).send("UPDATE error");
+            } else {
+                res.send("done");
+            }
+        }
+    });
+});
+
+app.post("/getplace_Route", function (req, res) {
+    const { Origin, Destination } = req.body;
+    const sql = "SELECT place_in_route , price_route FROM route WHERE Origin = ? AND Destination = ?";
+
+    con.query(sql, [Origin, Destination], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.get("/Datahotel", function (req, res) {
+    const sql = "SELECT * FROM hotel";
+    con.query(sql, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post("/getsomehotel", function (req, res) {
+    const { idhotel } = req.body;
+    const sql = "SELECT name_hotel , price_per_day FROM hotel WHERE hotelID=?";
+    con.query(sql, [idhotel], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+
+
+app.post("/getsomeplaceInRoute", function (req, res) {
+    const { someplace } = req.body;
+    const sql = "SELECT placeID , name_place , pic_place , info_place , price_place FROM place WHERE placeID=?";
+
+    con.query(sql, [someplace], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+
+});
+
+app.post("/Dataplan", function (req, res) {
+    const { iduser } = req.body;
+    const sql = "SELECT * FROM plan";
+    con.query(sql, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post("/Addplan", function (req, res) {
+    const { hotelID, user_ID, route } = req.body;
+    const sql = "INSERT INTO plan (count_selectOfshare, status_share, hotelID, user_ID, route, status) VALUES (?,?,?,?,?,?)";
+    con.query(sql, [0, 0, hotelID, user_ID, route, 0], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                console.log(err);
+                res.status(500).send("INSERT error");
+            } else {
+                res.send("done");
+            }
+        }
+    });
+
+});
+
+app.post("/Deleteplan", function (req, res) {
+    const { planid } = req.body;
+    // console.log(hotelID);
+    // res.send("done");
+    const sql = "DELETE FROM plan WHERE planID=?";
+    con.query(sql, [planid], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                res.status(500).send("DELETE error");
+            } else {
+                res.send("done");
+            }
+        }
+    })
+});
+
+app.post("/updateplanstatus", function (req, res) {
+    const { planid } = req.body;
+    // console.log(hotelID);
+    // res.send("done");
+    const sql = "UPDATE plan SET status=1 WHERE planID=?";
+    con.query(sql, [planid], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                res.status(500).send("UPDATE error");
+            } else {
+                res.send("done");
+            }
+        }
+    })
+});
+
+app.post("/updateplanstatusshare", function (req, res) {
+    const { planid } = req.body;
+    // console.log(hotelID);
+    // res.send("done");
+    const sql = "UPDATE plan SET status_share=1 WHERE planID=?";
+    con.query(sql, [planid], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            if (result.affectedRows != 1) {
+                res.status(500).send("UPDATE error");
+            } else {
+                res.send("done");
+            }
+        }
+    })
+});
+
+app.post("/getuser", function (req, res) {
+    const { user_ID } = req.body;
+    const sql = "SELECT user_name , user_Email FROM users WHERE user_ID =?";
+    con.query(sql, [user_ID], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post("/updateuser", function (req, res) {
+    const { iduser, passwordnew } = req.body;
+    bcrypt.hash(passwordnew, 10, function (err, hash) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("hash error");
+        } else {
+            const sql = "UPDATE users SET user_Password=? WHERE user_ID=?";
+            con.query(sql, [hash,iduser], function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send("Database error");
+                } else {
+                    res.send("done");
+                }
+            });
+        }
+    });
+
 });
 
 const PORT = 3000;
