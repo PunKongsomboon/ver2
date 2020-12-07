@@ -63,10 +63,7 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:3000/select_Route
+GET http://localhost:3000/GetRoute
 content-type: application/json
 
-{
-    "selectRoute": 8
-}
 

@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    if(localStorage.id == 0 || localStorage == undefined){
+        window.location.replace("/");
+    }
     var rowID;
     var table;
     var checkEditmodecar = 0;
