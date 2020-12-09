@@ -88,10 +88,6 @@ app.get("/Profile", function (req, res) {
     res.sendFile(path.join(__dirname, "/view/profile.html"));
 });
 
-app.post("/DatasomeID", function (req, res) {
-
-});
-
 app.get("/Contact", function (req, res) {
     res.sendFile(path.join(__dirname, "/view/contact.html"));
 });
@@ -598,8 +594,7 @@ app.post("/getsomeplaceInRoute", function (req, res) {
 
 });
 
-app.post("/Dataplan", function (req, res) {
-    const { iduser } = req.body;
+app.get("/shareplan", function (req, res) {
     const sql = "SELECT * FROM plan";
     con.query(sql, function (err, result) {
         if (err) {
@@ -611,22 +606,67 @@ app.post("/Dataplan", function (req, res) {
     });
 });
 
-app.post("/Addplan", function (req, res) {
-    const { hotelID, user_ID, route } = req.body;
-    const sql = "INSERT INTO plan (count_selectOfshare, status_share, hotelID, user_ID, route, status) VALUES (?,?,?,?,?,?)";
-    con.query(sql, [0, 0, hotelID, user_ID, route, 0], function (err, result) {
+app.get("/popularplan", function (req, res) {
+    const sql = "SELECT * FROM plan WHERE count_selectOfshare >= 1 ORDER BY count_selectOfshare DESC";
+    con.query(sql, function (err, result) {
         if (err) {
             console.log(err);
             res.status(500).send("Database error");
         } else {
-            if (result.affectedRows != 1) {
-                console.log(err);
-                res.status(500).send("INSERT error");
-            } else {
-                res.send("done");
-            }
+            res.send(result);
         }
     });
+
+})
+
+app.post("/Dataplan", function (req, res) {
+    const { iduser } = req.body;
+    const sql = "SELECT * FROM plan WHERE user_ID=?";
+    con.query(sql, [iduser], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.post("/Addplan", function (req, res) {
+    const { hotelID, user_ID, route } = req.body;
+    console.log(hotelID);
+    if (hotelID == 0) {
+        const sql = "INSERT INTO plan (count_selectOfshare, status_share, user_ID, route, status) VALUES (?,?,?,?,?)";
+        con.query(sql, [0, 0, user_ID, route, 0], function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
+                if (result.affectedRows != 1) {
+                    console.log(err);
+                    res.status(500).send("INSERT error");
+                } else {
+                    res.send("done");
+                }
+            }
+        });
+    } else {
+        const sql = "INSERT INTO plan (count_selectOfshare, status_share, hotelID, user_ID, route, status) VALUES (?,?,?,?,?,?)";
+        con.query(sql, [0, 0, hotelID, user_ID, route, 0], function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Database error");
+            } else {
+                if (result.affectedRows != 1) {
+                    console.log(err);
+                    res.status(500).send("INSERT error");
+                } else {
+                    res.send("done");
+                }
+            }
+        });
+
+    }
 
 });
 
@@ -687,6 +727,46 @@ app.post("/updateplanstatusshare", function (req, res) {
     })
 });
 
+app.post("/updatecountplan", function (req, res) {
+    const { idplan, iduser } = req.body;
+    const sql = "SELECT count_selectOfshare FROM plan WHERE planID=?";
+    con.query(sql, [idplan], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Database error");
+        } else {
+            let amount = result[0].count_selectOfshare;
+            amount++;
+            const sql = "UPDATE plan SET count_selectOfshare=? WHERE planID=?";
+            con.query(sql, [amount, idplan], function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send("Database error");
+                } else {
+                    const sql = "SELECT * FROM plan WHERE planID=?";
+                    con.query(sql, [idplan], function (err, result) {
+                        if (err) {
+                            console.log(err);
+                            res.status(500).send("Database error");
+                        } else {
+                            const sql = "INSERT INTO plan (count_selectOfshare, status_share, hotelID, user_ID, route, status) VALUES (?,?,?,?,?,?)";
+                            con.query(sql, [0, 0, result[0].hotelID, iduser, result[0].route, 0], function (err, result) {
+                                if (err) {
+                                    console.log(err);
+                                    res.status(500).send("Database error");
+                                } else {
+                                    res.send("/Profile");
+                                }
+                            });
+                        }
+                    })
+                }
+            });
+        }
+    });
+
+});
+
 app.post("/getuser", function (req, res) {
     const { user_ID } = req.body;
     const sql = "SELECT user_name , user_Email FROM users WHERE user_ID =?";
@@ -708,7 +788,7 @@ app.post("/updateuser", function (req, res) {
             res.status(500).send("hash error");
         } else {
             const sql = "UPDATE users SET user_Password=? WHERE user_ID=?";
-            con.query(sql, [hash,iduser], function (err, result) {
+            con.query(sql, [hash, iduser], function (err, result) {
                 if (err) {
                     console.log(err);
                     res.status(500).send("Database error");

@@ -19,7 +19,7 @@ $(document).ready(function () {
         }
     })
 
-
+    
     $.ajax({
         method: 'POST',
         url: '/getuser',
@@ -35,8 +35,15 @@ $(document).ready(function () {
             for (let io = 0; io < data.length; io++) {
                 let planid = data[io].planID
                 if (data[io].status == 0) {
+                    var amountplan0 = 0;
+                    for (let s = 0; s < data.length; s++) {
+                        if(data[s].status == 0){
+                            amountplan0 ++;
+                        }
+                    }
+                    console.log(amountplan0);
                     let create = "";
-                    for (let i = 0; i < data.length; i++) {
+                    for (let i = 0; i < amountplan0; i++) {
                         var picplaceInR = data[i].route;
                         // console.log(picplaceInR);
                         var picInR = picplaceInR.split(',');
@@ -85,7 +92,7 @@ $(document).ready(function () {
                                 }).done(function (data, state, xhr) {
                                     window.location.reload();
                                 }).fail(function (xhr, state, err) {
-                                    alert(err);
+                                    alert(xhr.responeText);
                                 });
                             });
                             $(".btn-warning").click(function () {
@@ -98,7 +105,7 @@ $(document).ready(function () {
                                 }).done(function (data, state, xhr) {
                                     window.location.reload();
                                 }).fail(function (xhr, state, err) {
-                                    alert(err);
+                                    alert(xhr.responeText);
                                 })
                             })
                             $(".btn-success").click(function () {
@@ -125,11 +132,19 @@ $(document).ready(function () {
                     }
 
                 } if (data[io].status == 1) {
+                    var amountplan1 = 0;
+                    for (let s = 0; s < data.length; s++) {
+                        if(data[s].status == 1){
+                            amountplan1 ++;
+                        }
+                    }
+                    // console.log(amountplan1);
                     let create = "";
-                    for (let i = 0; i < data.length; i++) {
+                    for (let i = 0; i < amountplan1; i++) {
                         var picplaceInR = data[i].route;
                         // console.log(picplaceInR);
                         var picInR = picplaceInR.split(',');
+                        let lengthroute = picInR.length;
                         for (let r = 0; r < picInR.length; r++) {
                             if (picInR[r] == "") {
                                 // console.log(r);
@@ -160,7 +175,7 @@ $(document).ready(function () {
                             let randompic = Math.floor(Math.random() * picInR.length);
 
                             // console.log(data[0].planID);
-                            create += "<div class='card col-12 mx-auto p-0 shadow rounded'><div class='row no-gutters'><div class='col-sm-5 col-xs-12'><img src='upload/" + picInR[randompic] + "' class='card-img-top'></div><div class='col-sm-6 col-xs-12 text-center m-auto'><button class='btn btn-secondary m-3'>ดูรายละเอียด</button></div></div>";
+                            create += "<div class='card col-12 mx-auto p-0 shadow rounded'><div class='row no-gutters'><div class='col-sm-5 col-xs-12'><img src='upload/" + picInR[randompic] + "' class='card-img-top'></div><div class='col-sm-4 col-xs-12'><div class='card-body'><h5 class='card-title text-dark'>เที่ยว "+ lengthroute +" ที่</h5><p class='card-text'>"+data[0].info_place+"</p></div></div><div class='col-sm-3 col-xs-12 text-center my-auto'><button class='btn btn-secondary my-3'>ดูรายละเอียด</button></div></div></div>";
                             $(".history-activity").html(create);
                             $(".btn-secondary").click(function () {
                                 $("#modelDetailplan").modal("show");

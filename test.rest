@@ -63,9 +63,5 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:3000/Addplan
+GET http://localhost:3000/popularplan
 content-type: application/json
-
-{
-    "someplace": 35
-}

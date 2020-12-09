@@ -104,7 +104,7 @@ $(document).ready(function () {
                 $("body").toggleClass("closelogin");
                 $('#ModalSignin').modal('hide');
             }
-        }).fail(function (xhr, state) {
+        }).fail(function (xhr, state, err) {
             $("#txtUserlogin").val("");
             $("#txtPasslogin").val("");
             alert("Usernmae or password wrong");
@@ -255,18 +255,20 @@ $(document).ready(function () {
     });
 
     $.ajax({
-        method: 'POST',
-        url: '/Dataplan'
-    }).done(function (data, state, xhr) {
-        // console.log(data);
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].status_share == 0) {
+        method: 'GET',
+        url: '/shareplan'
+    }).done(function (data1, state, xhr) {
+        console.log(data1);
+        let create = "";
+        for (let i = 0; i < data1.length; i++) {
+            // console.log(data[i].status_share);
+            if (data1[i].status_share == 0) {
 
-            } else if (data[i].status_share == 1) {
-                var picplaceInR = data[i].route;
+            } else if (data1[i].status_share == 1) {
+                var picplaceInR = data1[i].route;
                 // console.log(picplaceInR);
-                let create = "";
                 var picInR = picplaceInR.split(',');
+                let lengthroute = picInR.length;
                 for (let r = 0; r < picInR.length; r++) {
                     if (picInR[r] == "") {
                         // console.log(r);
@@ -295,14 +297,93 @@ $(document).ready(function () {
                     }
                     // console.log(picInR);
                     let randompic = Math.floor(Math.random() * picInR.length);
-                    // console.log(data[0].planID);
-                    create += "<div class='col-11 my-3'><div class='col-12 mx-auto p-0 shadow rounded'><div class='row no-gutters'><div class='col-sm-5 col-xs-12'><img src='upload/"+ picInR[randompic] +"' class='card-img-top'></div><div class='col-sm-7'><div class='col-sm-12 text-center mt-5'><button class='btn btn-outline-secondary my-3'>ดูรายละเอียด</button><button class='btn btn-outline-success my-3'>เลือก</button></div></div></div></div></div>";
+                    // console.log(data1[i].planID);
+                    create += "<div class='col-11 my-3'><div class='col-12 mx-auto p-0 shadow rounded'><div class='row no-gutters'><div class='col-sm-5 col-xs-12'><img src='upload/" + picInR[randompic] + "' class='card-img-top'></div><div class='col-sm-7'><div class='col-sm-12'><div class='card-body'><h5 class='card-title'>เที่ยว "+ lengthroute +" ที่</h5><p class='card-text'>"+ data[0].info_place +"</p></div></div><div class='col-sm-12 text-right'><button class='btn btn-outline-secondary my-3'>ดูรายละเอียด</button><button class='btn btn-outline-success my-3 btnselectplan' id='" + data1[i].planID + "'>เลือก</button></div></div></div></div></div>";
+                    // console.log(create);
                     $("#area-share").html(create);
+                    $(".btnselectplan").click(function () {
+                        if (localStorage.id != 0) {
+                            $("#pin").attr("data-toggle", "");
+                            $("#pin").attr("data-target", "");
+                            let idbtn = $(this).attr("id");
+                            // alert(idbtn);
+                            $.ajax({
+                                method: 'POST',
+                                url: '/updatecountplan',
+                                data: { idplan: idbtn, iduser: localStorage.id }
+                            }).done(function (data, state, xhr) {
+                                window.location.replace("/Profile");
+                            }).fail(function (xhr, state, err) {
+                                alert(xhr.responeText);
+                            });
+                            // $("#pin").attr("href", "/Filter");
+                        } else {
+                            // $("#pin").attr("href", "#");
+                            $("#pin").attr("data-toggle", "modal");
+                            $("#pin").attr("data-target", "#ModalSignin");
+                        }
+                        // alert($(this).attr("id"));
+                    });
+
 
                 }).fail(function (xhr, state, err) {
                     alert(err);
                 })
             }
+        }
+    }).fail(function (xhr, state, err) {
+        alert(err);
+    })
+
+    $.ajax({
+        method: 'GET',
+        url: '/popularplan'
+    }).done(function (data2, state, xhr) {
+        // console.log(data2);
+        let create = "";
+        for (let i = 0; i < data2.length; i++) {
+            // console.log(data[i].status_share);
+            var picplaceInR = data2[i].route;
+            // console.log(picplaceInR);
+            var picInR = picplaceInR.split(',');
+            for (let r = 0; r < picInR.length; r++) {
+                if (picInR[r] == "") {
+                    // console.log(r);
+                    // alert("test");
+                    picInR.splice(r, 1);
+                }
+            }
+            console.log(picInR);
+            let randompic = Math.floor(Math.random() * picInR.length);
+            console.log(randompic);
+            $.ajax({
+                method: 'POST',
+                url: '/someplace',
+                data: { idplace: picInR[randompic] }
+            }).done(function (data, state, xhr) {
+                // let test = data[0];
+                // console.log(test);
+                let picplaceInR = data[0].pic_place;
+                // console.log(picplaceInR);
+                let picInR = picplaceInR.split(',');
+                for (let r = 0; r < picInR.length; r++) {
+                    if (picInR[r] == "") {
+                        // console.log(r);
+                        // alert("test");
+                        picInR.splice(r, 1);
+                    }
+                }
+                // console.log(picInR);
+                let randompic = Math.floor(Math.random() * picInR.length);
+                // console.log(data[i].placeID);
+                create += "<div class='col-lg-12 col-md-9 col-12 m-3'><div class='card-container manual-flip'><div class='card'><div class='front'><div class='cover'><img src='upload/"+ picInR[randompic] +"' /><div class='card-img-overlay p-0 d-flex align-items-end mask flex-center'><button class='btn btn-primary col-12' onclick='rotateCard(this)'>Viewinformation</button></div></div></div><div class='back align-items-end mask flex-center'><div class='content'><div class='main'><h4 class='text-center'>"+ data[0].name_place +"</h4><h4 class='text-center'>ข้อมูลสถานที่</h4><p class='text-center'>"+data[0].info_place+"</p></div></div><footer><button class='btn btn-simple' rel='tooltip' title='Flip Card'onclick='rotateCard(this)' id='hidebtn'>Back</button></footer></div></div></div></div>";
+                // console.log(create);
+                $("#popularP").html(create);
+
+
+            }).fail(function (xhr, state, err) {
+                alert(err);
+            })
         }
     }).fail(function (xhr, state, err) {
         alert(err);

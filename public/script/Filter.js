@@ -1,5 +1,7 @@
 
 $(document).ready(function () {
+  var haveroute = 0;
+  var checkroute = 0;
   var GFselect = 1;
   var personselect = 0;
   var startprice = 0;
@@ -140,11 +142,23 @@ $(document).ready(function () {
     // console.log(data);
     if (data == "") {
       alert("ไม่มีข้อมูลเส้นนี้");
-    } else {
-      if (data[0].place_in_route == undefined) {
-        // alert("เส้นทางนี้ไม่มีสถานที่เที่ยวระหว่างทาง");
+      haveroute = 0;
+      if (checkroute == 1) {
+        checkroute = 1;
         $('body').toggleClass("notifi");
+      }
+    } else {
+      if (data[0].place_in_route == undefined || data[0].place_in_route == "") {
+        // alert("เส้นทางนี้ไม่มีสถานที่เที่ยวระหว่างทาง");
+        haveroute = 1;
+        if (checkroute == 0) {
+          checkroute = 0;
+          $('body').toggleClass("notifi");
+        } else {
+
+        }
       } else {
+        haveroute = 1;
         startprice = data[0].price_route;
         totalprice += data[0].price_route;
         $("#txttotalprice").text("ราคา " + totalprice + " บาท");
@@ -270,12 +284,24 @@ $(document).ready(function () {
         // alert(data);
         if (data == "") {
           alert("ไม่มีข้อมูลเส้นนี้");
+          haveroute = 0;
           $(".card").remove();
+          if (checkroute == 1) {
+            checkroute = 1;
+            $('body').toggleClass("notifi");
+          }
         } else {
           if (data[0].place_in_route == undefined || data[0].place_in_route == "") {
             // alert("เส้นทางนี้ไม่มีสถานที่เที่ยวระหว่างทาง");
-            $('body').toggleClass("notifi");
+            haveroute = 1;
+            if (checkroute == 0) {
+              checkroute = 0;
+              $('body').toggleClass("notifi");
+            } else {
+
+            }
           } else {
+            haveroute = 1;
             startprice = data[0].price_route;
             totalprice += data[0].price_route;
             $("#txttotalprice").text("ราคา " + totalprice + " บาท");
@@ -398,13 +424,25 @@ $(document).ready(function () {
         // alert(data[0].place_in_route);
         // alert(data);
         if (data == "") {
+          haveroute = 0;
           alert("ไม่มีข้อมูลเส้นนี้");
           $(".card").remove();
+          if (checkroute == 1) {
+            checkroute = 1;
+            $('body').toggleClass("notifi");
+          }
         } else {
           if (data[0].place_in_route == undefined || data[0].place_in_route == "") {
             // alert("เส้นทางนี้ไม่มีสถานที่เที่ยวระหว่างทาง");
-            $('body').toggleClass("notifi");
+            haveroute = 1;
+            if (checkroute == 0) {
+              checkroute = 0;
+              $('body').toggleClass("notifi");
+            } else {
+
+            }
           } else {
+            haveroute = 1;
             startprice = data[0].price_route;
             totalprice += data[0].price_route;
             $("#txttotalprice").text("ราคา " + totalprice + " บาท");
@@ -535,49 +573,22 @@ $(document).ready(function () {
     let checktotalpeople = $("#amountperson").val();
     let getweather = $("#weather").val();
     let RangeAge = $("#selectRangeAge").val();
-    
-    if (txtbudget == "") {
+
+    if (haveroute == 0) {
       Swal.fire({
-        icon: 'info',
-        title: 'Please tell your budget!'
+        icon: 'error',
+        title: 'Not have this route!',
+        text: 'Please select another route'
       })
     } else {
-      if (TypeTravel == "person") {
-        let amountallprice = totalprice + selecthotel;
-        if (amountallprice > txtbudget) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Total price is more than budget!',
-            text: 'Try to manage your total price!'
-          })
-        } else {
-
-          if (date == "") {
-            Swal.fire({
-              icon: 'info',
-              title: 'Please select your date!',
-            })
-          } else {
-            // alert("test");
-            // alert(saveRoute);
-            localStorage.budget = txtbudget;
-            localStorage.TypeTravel = TypeTravel;
-            localStorage.date = date;
-            localStorage.getweather = getweather;
-            localStorage.RangeAge = RangeAge;
-            localStorage.saveRoute = saveRoute;
-            localStorage.idhotel = idhotel;
-            window.location.href = "/Detailplan";
-          }
-        }
-      } else if (TypeTravel == "friend" || TypeTravel == "family") {
-        if (checktotalpeople == "") {
-          Swal.fire({
-            icon: 'info',
-            title: 'Please tell your number of your friend or family!'
-          })
-        } else {
-          let amountallprice = checktotalpeople * (totalprice + selecthotel);
+      if (txtbudget == "") {
+        Swal.fire({
+          icon: 'info',
+          title: 'Please tell your budget!'
+        })
+      } else {
+        if (TypeTravel == "person") {
+          let amountallprice = totalprice + selecthotel;
           if (amountallprice > txtbudget) {
             Swal.fire({
               icon: 'error',
@@ -585,6 +596,7 @@ $(document).ready(function () {
               text: 'Try to manage your total price!'
             })
           } else {
+
             if (date == "") {
               Swal.fire({
                 icon: 'info',
@@ -592,6 +604,7 @@ $(document).ready(function () {
               })
             } else {
               // alert("test");
+              // alert(saveRoute);
               localStorage.budget = txtbudget;
               localStorage.TypeTravel = TypeTravel;
               localStorage.date = date;
@@ -600,6 +613,39 @@ $(document).ready(function () {
               localStorage.saveRoute = saveRoute;
               localStorage.idhotel = idhotel;
               window.location.href = "/Detailplan";
+            }
+          }
+        } else if (TypeTravel == "friend" || TypeTravel == "family") {
+          if (checktotalpeople == "") {
+            Swal.fire({
+              icon: 'info',
+              title: 'Please tell your number of your friend or family!'
+            })
+          } else {
+            let amountallprice = checktotalpeople * (totalprice + selecthotel);
+            if (amountallprice > txtbudget) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Total price is more than budget!',
+                text: 'Try to manage your total price!'
+              })
+            } else {
+              if (date == "") {
+                Swal.fire({
+                  icon: 'info',
+                  title: 'Please select your date!',
+                })
+              } else {
+                // alert("test");
+                localStorage.budget = txtbudget;
+                localStorage.TypeTravel = TypeTravel;
+                localStorage.date = date;
+                localStorage.getweather = getweather;
+                localStorage.RangeAge = RangeAge;
+                localStorage.saveRoute = saveRoute;
+                localStorage.idhotel = idhotel;
+                window.location.href = "/Detailplan";
+              }
             }
           }
         }
