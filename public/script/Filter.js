@@ -479,9 +479,9 @@ $(document).ready(function () {
                   // console.log(randompic);
                   // console.log(picInR);
                   // console.log(picInR[randompic]);
-                  htmlspawncard += "<div class='card col-4 p-0 m-5 shadow rounded' style='height: auto;'><img class='card-img-top' src='upload/" + picInR[randompic] + "'><h4 class='card-title'>" + data[0].name_place + "</h4><p class='card-text'>" + data[0].info_place + "</p><label for=''>เลือก</label><div class='form-check m-auto p-0'><input class='m-auto' type='checkbox' value='" + data[0].placeID + "' name='place_inR' style='height: 2rem; width: 2rem;'></div></div>";
+                  htmlspawncard += "<div class='card col-md-4 col-12 p-0 m-5 shadow rounded' style='height: auto;'><img class='card-img-top' src='upload/" + picInR[randompic] + "'><h4 class='card-title'>" + data[0].name_place + "</h4><p class='card-text'>" + data[0].info_place + "</p><label for=''>เลือก</label><div class='form-check m-auto p-0'><input class='m-auto' type='checkbox' value='" + data[0].placeID + "' name='place_inR' style='height: 2rem; width: 2rem;'></div></div>";
                   // console.log(randompic);
-
+                  
 
                 }
                 //  alert(data[0].pic_place);

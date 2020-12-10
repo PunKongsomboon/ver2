@@ -19,7 +19,7 @@ $(document).ready(function () {
         }
     })
 
-    
+
     $.ajax({
         method: 'POST',
         url: '/getuser',
@@ -37,8 +37,8 @@ $(document).ready(function () {
                 if (data[io].status == 0) {
                     var amountplan0 = 0;
                     for (let s = 0; s < data.length; s++) {
-                        if(data[s].status == 0){
-                            amountplan0 ++;
+                        if (data[s].status == 0) {
+                            amountplan0++;
                         }
                     }
                     console.log(amountplan0);
@@ -134,8 +134,8 @@ $(document).ready(function () {
                 } if (data[io].status == 1) {
                     var amountplan1 = 0;
                     for (let s = 0; s < data.length; s++) {
-                        if(data[s].status == 1){
-                            amountplan1 ++;
+                        if (data[s].status == 1) {
+                            amountplan1++;
                         }
                     }
                     // console.log(amountplan1);
@@ -175,7 +175,7 @@ $(document).ready(function () {
                             let randompic = Math.floor(Math.random() * picInR.length);
 
                             // console.log(data[0].planID);
-                            create += "<div class='card col-12 mx-auto p-0 shadow rounded'><div class='row no-gutters'><div class='col-sm-5 col-xs-12'><img src='upload/" + picInR[randompic] + "' class='card-img-top'></div><div class='col-sm-4 col-xs-12'><div class='card-body'><h5 class='card-title text-dark'>เที่ยว "+ lengthroute +" ที่</h5><p class='card-text'>"+data[0].info_place+"</p></div></div><div class='col-sm-3 col-xs-12 text-center my-auto'><button class='btn btn-secondary my-3'>ดูรายละเอียด</button></div></div></div>";
+                            create += "<div class='card col-12 mx-auto p-0 shadow rounded my-3'><div class='row no-gutters'><div class='col-sm-5 col-xs-12'><img src='upload/" + picInR[randompic] + "' class='card-img-top'></div><div class='col-sm-4 col-xs-12'><div class='card-body'><h5 class='card-title text-dark'>เที่ยว " + lengthroute + " ที่</h5><p class='card-text'>" + data[0].info_place + "</p></div></div><div class='col-sm-3 col-xs-12 text-center my-auto'><button class='btn btn-secondary my-3'>ดูรายละเอียด</button></div></div></div>";
                             $(".history-activity").html(create);
                             $(".btn-secondary").click(function () {
                                 $("#modelDetailplan").modal("show");
@@ -215,6 +215,12 @@ $(document).ready(function () {
             }).fail(function (xhr, state, err) {
                 alert(err);
             });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'New confirm password do not match with new password!',
+                text: 'Try again!'
+            })
         }
     });
 

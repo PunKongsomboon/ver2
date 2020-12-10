@@ -140,6 +140,10 @@ $(document).ready(function () {
                         data: { username: signup_username, password: signup_password }
                     }).done(function (data, state, xhr) {
                         // alert(data);
+                        Swal.fire({
+                            title: 'Sign Up successfully!',
+                            icon: 'success',
+                        })
                         localStorage.id = data[0].user_ID;
                         // alert(data[0].user_Role);
                         $("#txtSignup_email").val("");
