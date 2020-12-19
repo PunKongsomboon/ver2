@@ -4,7 +4,7 @@ html, body * {
   }
   
   body {
-    background: linear-gradient( rgba(246, 247, 249, 0.8), rgba(246, 247, 249, 0.8)), url(../image/03.jpg) no-repeat center center fixed;
+    background: linear-gradient( rgba(161, 221, 186, 0.8), rgba(161, 185, 231, 0.8)) no-repeat center center fixed;
     background-size: cover;
   }
   
@@ -12,7 +12,7 @@ html, body * {
     background: none;
     border: none;
   }
-  
+
   .frame {
     height: 575px;
     width: 430px;
@@ -430,10 +430,15 @@ html, body * {
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
     color: #A3B0BB;
+}
+h4{
+  color: #206a9b;
+}
+p{
+  color: whitesmoke;
 }
 a,
 a:hover,
@@ -446,7 +451,7 @@ a:active {
 a,
 a:active,
 a:focus {
-    color: #bbe1fa;
+    color: #206a9b;
     text-decoration: none;
     transition-timing-function: ease-in-out;
     -ms-transition-timing-function: ease-in-out;
@@ -464,11 +469,6 @@ img {
 max-width: 100%;
 height: auto;
 }
-img{
-width: 160px;
-height: 150px;
-}
-
 
 .sec-title-style1 {
 position: relative;
@@ -489,14 +489,14 @@ padding-bottom: 42px;
 .sec-title-style1 .title {
 position: relative;
 display: block;
-color: #bbe1fa;
+color: #0a4d7a;
 font-size: 36px;
 line-height: 46px;
 font-weight: 700;
 text-transform: uppercase;
 }
 .sec-title-style1 .title.clr-white{
-color: #bbe1fa;
+color: #cee5f5;
 }
 .sec-title-style1 .decor {
 position: relative;
@@ -548,7 +548,7 @@ margin: 7px 0 0;
 position: relative;
 display: inline-block;
 padding: 0 15px;
-color: #bbe1fa;
+color: #166396;
 font-size: 14px;
 line-height: 16px;
 font-weight: 700;
@@ -573,7 +573,7 @@ left: 0;
 bottom: 0;
 width: 50px;
 height: 1px;
-background: #282953;
+background: #8aa9ff;
 content: "";
 margin: 2px 0;
 }
@@ -648,14 +648,14 @@ display: block;
 padding-top: 16px;
 }
 .sec-title-style1 .bottom-text p{
-color: #CCC0AE;
+color: #6857fd;
 font-size: 16px;
 line-height: 26px;
 font-weight: 400;
 margin: 0;
 }
 .sec-title-style1 .bottom-text.clr-gray p{
-color: #cdcdcd;    
+color: #5827dd;    
 }
 .contact-address-area{
 position: relative;
@@ -676,7 +676,7 @@ align-items: center;
 .single-contact-address-box {
 position: relative;
 display: block;
-background: #3b6079;
+background: #ffffff;
 padding: 85px 30px 77px;
 }
 .single-contact-address-box .icon-holder{
@@ -692,7 +692,7 @@ color: #ffffff;
 margin: 0px 0 9px;
 }
 .single-contact-address-box h2{
-color: #94cfc7;
+color: #bdf5ed;
 font-size: 24px;
 font-weight: 600;
 margin: 0 0 19px;
@@ -888,6 +888,6 @@ cursor: pointer;
 }
 
 .contact-form form button:hover{
-color: #153945;
-background: #A3B0BB;
+color: #51a9c7;
+background: #f1f9ff;
 }
