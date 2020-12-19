@@ -10,7 +10,7 @@ $(document).ready(function () {
             $(".navbar").style
         }
         else if (scroll < 100) {
-            $(".navbar").css("background", "none");
+            $(".navbar").css("background", "#206a9b");
 
         }
     })
